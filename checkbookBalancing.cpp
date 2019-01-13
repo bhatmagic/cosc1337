@@ -1,9 +1,6 @@
 //***************************************************************
 //  Programmer: David Boyd
-//
-//  Purpose:
-//    This program helps you balance your checkbook at the end of the month.
-//
+//  Purpose: Balance your checkbook at the end of the month.
 //  Date: 2019.01.11
 //***************************************************************
 
@@ -12,14 +9,16 @@
 #include <string>
 
 // Function prototypes
+bool endProgram(double&, double&);
 bool processCheck(double&, double&);
 bool processDeposit(double&, double&);
-bool endProgram(double&, double&);
 
 // Global variables
 double SERV_CHARGE = 0.35;
 
-// Run main program
+//============
+//=== Main ===
+//============
 int main () {
     
     // Declare variables
@@ -65,6 +64,18 @@ int main () {
     std::cout << std::endl;
 
     return 0;
+}
+
+//===================
+//=== End Program ===
+//===================
+bool endProgram(double& balance, double& totalCharges) {
+
+    balance = (balance - totalCharges);
+    std::cout << "Processing end of month";
+    std::cout << "\nFinal balance: $" << balance;
+
+    return 1;
 }
 
 //=====================
@@ -120,16 +131,4 @@ bool processDeposit(double &balance, double &totalCharges) {
     }
 
     return 0;
-}
-
-//===================
-//=== End Program ===
-//===================
-bool endProgram(double& balance, double& totalCharges) {
-
-    balance = (balance - totalCharges);
-    std::cout << "Processing end of month";
-    std::cout << "\nFinal balance: $" << balance;
-
-    return 1;
 }
