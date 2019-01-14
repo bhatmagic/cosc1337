@@ -17,9 +17,6 @@ class Date {
     int _day, 
         _monthNumber, 
         _year;
-    // enum _monthName { January, February, March, April, 
-    //                  May, June, July, August, September, 
-    //                  October, November, December };
     std::string _monthName;
     
     void _setDay(int);
