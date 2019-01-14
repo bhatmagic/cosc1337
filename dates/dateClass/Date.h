@@ -20,20 +20,20 @@ class Date {
     std::string _monthName;
     
     void _setDay(int);
-    void _setMonthNumber(int);
     void _setMonthName();
+    void _setMonthNumber(int);
     void _setYear(int);
 
   public: 
 
     Date();
     int getDay() const;
-    int getMonthNumber() const;
     std::string getMonthName() const;
+    int getMonthNumber() const;
     int getYear() const;
-    void printNumeric() const;
     void printAmerican() const;
     void printEuropean() const;
+    void printNumeric() const;
     void set(int, int, int);
 
 }; 
