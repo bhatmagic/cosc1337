@@ -53,17 +53,10 @@ int main () {
         command = tolower(command);
 
         switch(command) {
-            case 'c':
-                processCheck(balance, totalCharges, lowBal_count);
-                break;
-            case 'd':
-                processDeposit(balance, totalCharges);
-                break;
-            case 'e':
-                break;
-            default:
-                std::cout << "\nNot a valid command.\n";
-                break;
+            case 'c': processCheck(balance, totalCharges, lowBal_count); break;
+            case 'd': processDeposit(balance, totalCharges); break;
+            case 'e': break;
+            default : std::cout << "\nNot a valid command.\n"; break;
         } 
     } while (command != 'e');
 
