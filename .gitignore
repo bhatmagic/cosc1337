@@ -1,0 +1,15 @@
+#Vim
+*~
+*.swp
+
+#C/C++
+*.o
+*.a
+appname(main)
+
+#Python
+*.py[cod]
+--pycache--
+
+#Mac
+.DS.Store
