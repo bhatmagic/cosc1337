@@ -5,6 +5,7 @@
 #C/C++
 *.o
 *.a
+*.exe
 appname(main)
 
 #Python
@@ -12,4 +13,4 @@ appname(main)
 --pycache--
 
 #Mac
-.DS.Store
+.DS_Store
