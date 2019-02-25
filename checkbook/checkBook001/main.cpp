@@ -121,9 +121,9 @@ void displayMenu(void) {
     std::cout << "E - end the programn";    
 }
 
-//==============
-//=== Choose ===
-//==============
+//============================
+//=== Process Transactions ===
+//============================
 void processTransactions(double &balance, double &totalCharges) {
     char command;
 
