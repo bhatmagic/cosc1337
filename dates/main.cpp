@@ -33,11 +33,14 @@ int main() {
 
   std::cout << "\nDisplay User's Input:\n";
   displayDates(userDate);
-  std::cout << "\nDisplay Month = 0, Day = 0, Year = 0\n";
+  std::cout << "\nDisplay Default Data001:"
+            << "\nMonth = 0, Day = 0, Year = 0\n";
   displayDates(test1);
-  std::cout << "\nDisplay Month = 9999, Day = 9999, Year = 9999\n";
+  std::cout << "\nDisplay Default Data002:"
+            << "\nMonth = 9999, Day = 9999, Year = 9999\n";
   displayDates(test2);
-  std::cout << "\nDisplay Month = 3, Day = 1, Year = 2016\n";
+  std::cout << "\nDisplay Default Data003:"
+            << "\nMonth = 3, Day = 1, Year = 2016\n";
   displayDates(test3);
 
   return 0;
