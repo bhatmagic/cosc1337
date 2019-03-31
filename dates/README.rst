@@ -31,7 +31,7 @@ Note: These are class member functions that print the date stored in a Date obje
 Run Program
 ============
 
-    # Clone the repository
-    # Use Make to compile, run, and clean::
+	# Clone the repository
+	# Use Make to compile, run, and clean::
         make
         make clean
