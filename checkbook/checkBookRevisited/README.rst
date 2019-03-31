@@ -19,7 +19,7 @@ Program Input
 +======================+===============================================+
 | C **amount**         | Process a checkout for **amount** dollars.    |
 +----------------------+-----------------------------------------------+
-| D **amont**          | Process a deposit for **amount** dollars.     |
+| D **amount**          | Process a deposit for **amount** dollars.     |
 +----------------------+-----------------------------------------------+
 | E                    | Perform end-of-month processing & end program.|
 +----------------------+-----------------------------------------------+
