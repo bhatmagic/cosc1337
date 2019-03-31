@@ -118,8 +118,8 @@ bool processCheck (double &balance, double &totalCharges, bool& lowBal_count) {
     std::cin  >> transAmt;
 
     if (transAmt <= 0) {
-        std::cout << "\nInvalid transaction amount.";
-        std::cout << "Canceling trasaction.";
+        std::cout << "\nInvalid transaction amount.\n";
+        std::cout << "Canceling transaction.";
         return 0;
     } else {  
         std::cout << "Processing check for $" << transAmt;
@@ -151,8 +151,8 @@ bool processDeposit(double &balance, double &totalCharges) {
     std::cin  >> transAmt;
 
     if (transAmt <= 0) {
-        std::cout << "\nInvalid transaction amount.";
-        std::cout << "\nCanceling trasaction.";
+        std::cout << "\nInvalid transaction amount.\n";
+        std::cout << "Canceling transaction.";
         return 0;
     } else {  
         std::cout << "Processing deposit for $" << transAmt;
