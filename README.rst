@@ -10,7 +10,7 @@ Basic C++ Programs
 +--------------------|------------+
 | Checkbook Balancing| Completed  |
 +--------------------|------------+
-| Checkbook Balancing| Completed  | 
+| Checkbook Balancing| Completed  |
 | Revisited          |            |
 +--------------------|------------+
 | Date Class         | Completed  |
