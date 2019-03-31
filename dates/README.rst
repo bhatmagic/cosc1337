@@ -27,3 +27,11 @@ Three "print" member functions will be displayed in the following formats::
        15 March 2016
 
 Note: These are class member functions that print the date stored in a Date object.
+
+Run Program
+============
+
+    # Clone the repository
+    # Use Make to compile, run, and clean::
+        make
+        make clean
