@@ -20,7 +20,7 @@ Service Charges
 ----------------
 
 	- There is a $0.35 service charge for each check written. Keep a running total of the service charges.
-	- Service charges are not deducted from the account balance until the :underline: 'end of the month'.
+	- Service charges are not deducted from the account balance until the end of the month.
 
 Output
 -------
