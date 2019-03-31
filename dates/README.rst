@@ -33,5 +33,6 @@ Run Program
 
 1. Clone the repository
 2. Use Make to compile, run, and clean::
+
 	make
 	make clean
