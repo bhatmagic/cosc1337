@@ -3,6 +3,8 @@ Basic C++ Programs
 :Author: David Boyd
 :Term: Spring 2018
 
+This repostiory holds revised programs that I've written.
+
 +--------------------+------------+
 |  Program Name      | Progress   |
 +====================+============+
