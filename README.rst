@@ -3,8 +3,6 @@ Basic C++ Programs
 :Author: David Boyd
 :Term: Spring 2018
 
-This repostiory holds revised programs that I've written.
-
 +--------------------+------------+
 |  Program Name      | Progress   |
 +====================+============+
@@ -29,3 +27,4 @@ This repostiory holds revised programs that I've written.
 +--------------------|------------+
 | Payroll Version 3.0| In-Progress|
 +--------------------|------------+
+
