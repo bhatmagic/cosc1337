@@ -49,7 +49,7 @@ void Date::_setMonthName() {
 //=== _Set Year ===
 //================= 
 void Date::_setYear(int year) {
-  (year > 1949 && year < 2021) ? (this->_year = year) : (this->_year = 1950);
+  this->_year = (year > 1949 && year < 2021) ? (year) : (2001);
 }
 
 /* 
