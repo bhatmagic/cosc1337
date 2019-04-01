@@ -2,6 +2,7 @@ Payroll Version 1.0
 ####################
 :Author: David Boyd
 :Date: Spring 2018
+:Notes: INCOMPLETE
 
 This ia a mock payroll program for Armadillo Automotive Group. This program uses a struct to hold the general employee information for one employee and an array of structs to hold the employee information for all employees.
 
