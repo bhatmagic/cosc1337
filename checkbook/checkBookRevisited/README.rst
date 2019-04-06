@@ -2,6 +2,7 @@ Checkbook Balancing Revisited
 ##############################
 :Author: David Boyd
 :Date: Spring 2018
+:Status: Complete
 
 This program is a modified version of the Checkbook Balancing program.
 
