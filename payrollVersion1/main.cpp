@@ -1,17 +1,22 @@
+// Copyright 2019 David Boyd
 #include <iostream>
 #include <iomanip>
 #include <string>
 
+// Global var
+int NUM_EMP = 4; 
+double FTH = 40;   // full-time hours
+double OTP = 1.5;  // overtime pay
+double TAX = 0.15;
+
 struct Employee {
-    
     int id;
     std::string name;
-    double payRate; // per hour
-    bool type; // 0 for union, 1 for mgmt
+    double payRate;  // per hour
+    bool type;       // 0 = union, 1 = mgmt
 };
 
 struct Timecard {
-
     double hours,
            grossPay,
            taxes,
@@ -19,47 +24,43 @@ struct Timecard {
 };
 
 // Function protoypes
-void calculatePay(Employee*, Timecard*);
-//void displayEmpTc(Employee*, Timecard*);
+void calculatePay(Employee*, Timecard*, double, double);
 void getEmpInfo(Employee*);
 double getGrossPay(Employee*, Timecard*); 
 void getHours(Employee*, Timecard*);
-
-
-// Global var
-int NUM_EMP = 4; 
-double FTH = 40; // full-time hours
-double OTP = 1.5; // overtime pay
-double TAX = 0.15;
+//void display(Employee* empPtr);
 
 //============
 //=== Main ===
 //============
 int main () {
 
-    double gross, tax, net;
-    double* hours = new double[NUM_EMP];
     Employee* emp = new Employee[NUM_EMP]; 
     Timecard* tc  = new Timecard[NUM_EMP];
+    double totalGrossPay = 0,
+           totalNetPay   = 0;
 
     std::cout << "Armadillo Automotive Group - Payroll\n\n";
 
     getEmpInfo(emp);
     getHours(emp, tc); 
-    calculatePay(emp, tc);
-
-//DEBUG
-    for (int i=0; i<NUM_EMP; ++i) {
-        std::cout << emp[i].id << " " << emp[i].name << " " << emp[i].payRate << " " << emp[i].type << std::endl;
-    }
-
+    calculatePay(emp, tc, totalGrossPay, totalNetPay);
+    
+    for (int i=0; i<NUM_EMP; ++i) 
+        totalGrossPay += tc[i].grossPay;
+        totalNetPay   += tc[i].netPay;
+    std::cout<<"\nTotal Gross Pay $" << totalGrossPay 
+             <<"\nTotal Net Pay   $" << totalNetPay;
+    //display(emp);
+    
     return 0;
 }
 
 //====================
 //=== Calulate Pay ===
 //====================
-void calculatePay(Employee* emp, Timecard* tc) {
+void calculatePay(Employee* emp, Timecard* tc, 
+     double totalGrossPay, double totalNetPay) {
 
     for (int i=0; i<NUM_EMP; ++i) {
        tc[i].grossPay = getGrossPay(emp, tc);
@@ -69,21 +70,6 @@ void calculatePay(Employee* emp, Timecard* tc) {
     }
 }
 
-//=================================
-//=== Display Employee Timecard ===
-//=================================
-//void displayEmpTc(Employee* emp, Timecard* tc) {
-//    std::cout << std::left <<  std::setw(4) << "ID"
-//              << std::setw(20) << "Name"
-//              << std::right << std::setw(10) 
-//              << "Gross Pay" << "Tax" << "Net Pay" << std::endl;
-//    for (int i=0; i<NUM_EMP; ++i) {
-//        std::cout << std::left << std::setw(4) << emp[i]->id
-//                  << std::setw(20) << emp[i]->name 
-//                  << std::right << std::setw(10)
-//                  <<< tc->grossPay << tc->taxes << tc->netPay << std::endl;
-//    }
-//}
 //================================
 //=== Get Employee Information ===
 //================================
@@ -108,9 +94,9 @@ void getEmpInfo(Employee* emp) {
 //=====================
 double getGrossPay(Employee* emp, Timecard* tc) { 
     if (emp->type == 0 && tc->hours > FTH) {
-            double regPay = emp->payRate * FTH;
-            double otHours = tc->hours - FTH;
-            double otPay = OTP * otHours * emp->payRate;
+            double regPay  = (emp->payRate * FTH);
+            double otHours = (tc->hours - FTH);
+            double otPay   = (OTP * otHours * emp->payRate);
             return (regPay + otPay);
         } else {
             return (emp->payRate * tc->hours);
@@ -129,3 +115,20 @@ void getHours(Employee* emp, Timecard* tc) {
     }
 }
 
+//========================
+//=== TimeCard Display ===
+//========================
+// void display(Employee* empPtr) {
+//   Employee emp[NUM_EMP] = &empPtr;
+//   std::cout << std::left <<  std::setw(4) << "ID"
+//          << std::setw(20) << "Name"
+//          << std::right << std::setw(10) 
+//          << "Gross Pay" << "Tax" << "Net Pay\n";
+//     for (int i=0; i<NUM_EMP; ++i) {
+//         std::cout << std::left << std::setw(4) << emp[i]->id
+//              << std::setw(20)  << emp[i]->name 
+//              << std::right     << std::setw(10)
+//              << tc->grossPay   << tc->taxes 
+//              << tc->netPay     << std::endl;
+//     }
+// }
