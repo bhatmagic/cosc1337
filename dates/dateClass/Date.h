@@ -1,14 +1,7 @@
-//***************************************************************
-//  Programmer: David Boyd
-//  Program: Date Class header file.
-//  Date: 2019.01.13
-//***************************************************************
-
+// Copyright 2019 David Boyd
+#pragma once
 #include <iostream>
 #include <string>
-
-#ifndef DATE_H
-#define DATE_H
 
 class Date {
 
@@ -35,6 +28,4 @@ class Date {
     void printEuropean() const;
     void printNumeric() const;
     void set(int, int, int);
-
 }; 
-#endif
