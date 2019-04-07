@@ -10,7 +10,6 @@ struct Employee {
     int    id,
            type;  // union=0, mgmt=1
     double payRate;
-    
     std::string name;
 };
 
@@ -31,21 +30,21 @@ struct CompanyTimecard {
 //===========================
 //=== Function Prototypes ===
 //===========================
-void calculateData(Employee *, 
-           Timecard *, CompanyTimecard *);
+void   calculateData(Employee *, 
+               Timecard *, CompanyTimecard *);
 void   displayPayroll(Employee *, Timecard *);
-void   displayPayrollReportMenu();
+void   displayPayrollMenu();
 void   displayTotals(CompanyTimecard);
-void   getEmployeeData(Employee[], int);
+void   getEmployeeData(Employee *);
 double getGrossPay(Employee, Timecard);
 double getTax(Timecard);
 void   getTimecardData(Employee *, 
-            Timecard *, CompanyTimecard *);
+              Timecard *, CompanyTimecard *);
 
 //========================
 //=== Global Variables ===
 //========================
-int    NUM_EMP   = 2;
+int    NUM_EMP   = 4;
 double FTHOURS   = 40,
        OTPAYRATE = 1.5,
        TAX       = 0.15;
@@ -63,11 +62,12 @@ int main() {
     // Set Currency Format
     std::cout << std::fixed << std::setprecision(2);
     
-    getEmployeeData(emp, NUM_EMP);
+    // Run Program
+    getEmployeeData(emp);
     getTimecardData(emp, tc, &ctc);
     calculateData(emp, tc, &ctc);
     std::cout << std::endl;
-    displayPayrollReportMenu();
+    displayPayrollMenu();
     displayPayroll(emp, tc);
     displayTotals(ctc);
     std::cout << std::endl;
@@ -107,9 +107,9 @@ void displayPayroll(Employee *emp, Timecard *tc) {
 }
 
 //===================================
-//=== Display Payroll Report Menu ===
+//=== Display Payroll Menu ===
 //===================================
-void displayPayrollReportMenu() {
+void displayPayrollMenu() {
     std::cout << "Payroll Report\n\n";
     std::cout << std::left;
     std::cout << std::setw(4)  << "ID"
@@ -133,7 +133,7 @@ void   displayTotals(CompanyTimecard ctc) {
 //=========================
 //=== Get Employee Data ===
 //=========================
-void getEmployeeData(Employee emp[], int NUM_EMP) {
+void getEmployeeData(Employee *emp) {
     for (int i=0; i<NUM_EMP; ++i) {
         do { 
             std::cout<<"Enter information for employee " << i;
