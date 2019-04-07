@@ -54,7 +54,6 @@ int main() {
     Employee        emp[NUM_EMP];
     Timecard        tc[NUM_EMP];
     CompanyTimecard ctc; 
-    char c;
     
     // Get Employee Data
     for (int i=0; i<NUM_EMP; ++i) {
