@@ -7,9 +7,10 @@
 //=== Structures ===
 //==================
 struct Employee {
-    int    id;
+    int    id,
+           type;  // union=0, mgmt=1
     double payRate;
-    bool   type;  // union=0, mgmt=1
+    
     std::string name;
 };
 
@@ -30,12 +31,16 @@ struct CompanyTimecard {
 //===========================
 //=== Function Prototypes ===
 //===========================
-void   calculateData(Employee, Timecard);
-void   displayPayroll(Employee, Timecard);
+void calculateData(Employee *, 
+           Timecard *, CompanyTimecard *);
+void   displayPayroll(Employee *, Timecard *);
 void   displayPayrollReportMenu();
 void   displayTotals(CompanyTimecard);
+void   getEmployeeData(Employee[], int);
 double getGrossPay(Employee, Timecard);
 double getTax(Timecard);
+void   getTimecardData(Employee *, 
+            Timecard *, CompanyTimecard *);
 
 //========================
 //=== Global Variables ===
@@ -55,81 +60,50 @@ int main() {
     Timecard        tc[NUM_EMP];
     CompanyTimecard ctc; 
     
-    // Get Employee Data
-    for (int i=0; i<NUM_EMP; ++i) {
-        do { 
-            std::cout<<"Enter information for employee " << i;
-            std::cout<<"\nEmployee id: ";
-            std::cin >> emp[i].id;
-        } while (emp[i].id < 1);
-
-        std::cout<<"Employee name: ";
-            std::cin.ignore();
-            std::getline(std::cin, emp[i].name);
-
-        do {
-            std::cout<<"Pay rate: ";
-            std::cin >> emp[i].payRate;
-        } while ( emp[i].payRate <= 0 );
-
-        std::cout<<"Type: ";
-            std::cin >> emp[i].type;
-
-        std::cout << std::endl;
-    }
-    // Get Timecard data
-    for (int i=0; i<NUM_EMP; ++i) {
-        std::cout<<"\nHours worked for " << emp[i].name << ": ";
-            std::cin >> tc[i].hours;
-        ctc.totalHours += tc[i].hours;
-    }
-
-    // Calculate data
-    for (int i=0; i<NUM_EMP; ++i) {
-        tc[i].grossPay = getGrossPay(emp[i], tc[i]);
-        tc[i].tax      = getTax(tc[i]);
-        tc[i].netPay   = (tc[i].grossPay - tc[i].tax);
-        ctc.totalGrossPay += tc[i].grossPay;
-        ctc.totalTax      += tc[i].tax;
-        ctc.totalNetPay   += tc[i].netPay;
-    }
-
     // Set Currency Format
     std::cout << std::fixed << std::setprecision(2);
-
-    // Display Payroll Report
+    
+    getEmployeeData(emp, NUM_EMP);
+    getTimecardData(emp, tc, &ctc);
+    calculateData(emp, tc, &ctc);
+    std::cout << std::endl;
     displayPayrollReportMenu();
-    for (int i=0; i<NUM_EMP; ++i)
-        displayPayroll(emp[i], tc[i]);
-
-    // Display Totals
+    displayPayroll(emp, tc);
     displayTotals(ctc);
-   
-    // End Program
     std::cout << std::endl;
     std::cout << "\nPress any key to continue...\n";
+    
     return 0;
 }
 
 //======================
 //=== Calculate Data ===
 //======================
-void   calculateData(Employee, Timecard, CompanyTimecard) {
-    
+void calculateData(Employee *emp, Timecard *tc, CompanyTimecard *ctc) {
+    for (int i=0; i<NUM_EMP; ++i) {
+        tc[i].grossPay = getGrossPay(emp[i], tc[i]);
+        tc[i].tax      = getTax(tc[i]);
+        tc[i].netPay   = (tc[i].grossPay - tc[i].tax);
+        ctc->totalGrossPay += tc[i].grossPay;
+        ctc->totalTax      += tc[i].tax;
+        ctc->totalNetPay   += tc[i].netPay;
+    }    
 }
 
 //=======================
 //=== Display Payroll ===
 //=======================
-void displayPayroll(Employee emp, Timecard tc) {
-    std::cout << std::left
-              << std::setw(4)  << emp.id
-              << std::setw(20) << emp.name
-              << std::right
-              << std::setw(15) << tc.grossPay
-              << std::setw(8)  << tc.tax
-              << std::setw(9)  << tc.netPay
-              << std::endl;
+void displayPayroll(Employee *emp, Timecard *tc) {
+    for (int i=0; i<NUM_EMP; ++i) {
+        std::cout << std::left
+                  << std::setw(4)  << emp[i].id
+                  << std::setw(20) << emp[i].name
+                  << std::right
+                  << std::setw(15) << tc[i].grossPay
+                  << std::setw(8)  << tc[i].tax
+                  << std::setw(9)  << tc[i].netPay
+                  << std::endl;
+    }
 }
 
 //===================================
@@ -147,20 +121,48 @@ void displayPayrollReportMenu() {
               << std::endl;
 }
 
-//=====================
+//======================
 //=== Display Totals ===
-//=====================
+//======================
 void   displayTotals(CompanyTimecard ctc) {
     std::cout << std::endl;
     std::cout <<   "Total Gross Pay $ " << ctc.totalGrossPay
               << "\nTotal Net Pay   $ " << ctc.totalNetPay;
 }
 
+//=========================
+//=== Get Employee Data ===
+//=========================
+void getEmployeeData(Employee emp[], int NUM_EMP) {
+    for (int i=0; i<NUM_EMP; ++i) {
+        do { 
+            std::cout<<"Enter information for employee " << i;
+            std::cout<<"\nEmployee id: ";
+            std::cin >> emp[i].id;
+        } while (emp[i].id < 1);
+
+        std::cout<<"Employee name: ";
+        std::cin.ignore();
+        std::getline(std::cin, emp[i].name);
+
+        do {
+            std::cout<<"Pay rate: ";
+            std::cin >> emp[i].payRate;
+        } while ( emp[i].payRate <= 0 );
+
+        do {
+            std::cout<<"Type: ";
+            std::cin >> emp[i].type;
+        } while ( emp[i].type !=0 && emp[i].type !=1 );
+
+        std::cout << std::endl;
+    }
+}
+
 //=====================
 //=== Get Gross Pay ===   
 //=====================
-double getGrossPay(Employee emp,
-                   Timecard tc) {
+double getGrossPay(Employee emp, Timecard tc) {
     double regPay  = 0,
            otHours = 0,
            totalOTPay = 0;
@@ -181,4 +183,16 @@ double getGrossPay(Employee emp,
 //===============
 double getTax(Timecard tcard) {
     return (tcard.grossPay * TAX);
+}
+
+//=========================
+//=== Get Timecard Data ===
+//=========================
+void getTimecardData(Employee *emp, Timecard *tc,
+                     CompanyTimecard *ctc) {
+    for (int i=0; i<NUM_EMP; ++i) {
+        std::cout<<"Hours worked for " << emp[i].name << ": ";
+            std::cin >> tc[i].hours;
+        ctc->totalHours += tc[i].hours;
+    }
 }
