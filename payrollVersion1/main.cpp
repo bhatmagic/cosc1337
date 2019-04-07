@@ -3,6 +3,9 @@
 #include <string>
 #include <iomanip>
 
+//==================
+//=== Structures ===
+//==================
 struct Employee {
     int    id;
     double payRate;
@@ -24,16 +27,27 @@ struct CompanyTimecard {
            totalTax      = 0;
 };
 
-// Function Prototypes
+//===========================
+//=== Function Prototypes ===
+//===========================
+void   calculateData(Employee, Timecard);
+void   displayPayroll(Employee, Timecard);
+void   displayPayrollReportMenu();
+void   displayTotals(CompanyTimecard);
 double getGrossPay(Employee, Timecard);
 double getTax(Timecard);
 
-// Global Variables
-int    NUM_EMP   = 4;
+//========================
+//=== Global Variables ===
+//========================
+int    NUM_EMP   = 2;
 double FTHOURS   = 40,
        OTPAYRATE = 1.5,
        TAX       = 0.15;
 
+//============
+//=== Main ===
+//============
 int main() {
 
     // Declare Variables
@@ -44,20 +58,25 @@ int main() {
     
     // Get Employee Data
     for (int i=0; i<NUM_EMP; ++i) {
-        do {
+        do { 
             std::cout<<"Enter information for employee " << i;
             std::cout<<"\nEmployee id: ";
             std::cin >> emp[i].id;
         } while (emp[i].id < 1);
+
         std::cout<<"Employee name: ";
             std::cin.ignore();
             std::getline(std::cin, emp[i].name);
+
         do {
-        std::cout<<"Pay rate: ";
+            std::cout<<"Pay rate: ";
             std::cin >> emp[i].payRate;
         } while ( emp[i].payRate <= 0 );
+
         std::cout<<"Type: ";
             std::cin >> emp[i].type;
+
+        std::cout << std::endl;
     }
     // Get Timecard data
     for (int i=0; i<NUM_EMP; ++i) {
@@ -65,6 +84,7 @@ int main() {
             std::cin >> tc[i].hours;
         ctc.totalHours += tc[i].hours;
     }
+
     // Calculate data
     for (int i=0; i<NUM_EMP; ++i) {
         tc[i].grossPay = getGrossPay(emp[i], tc[i]);
@@ -79,6 +99,44 @@ int main() {
     std::cout << std::fixed << std::setprecision(2);
 
     // Display Payroll Report
+    displayPayrollReportMenu();
+    for (int i=0; i<NUM_EMP; ++i)
+        displayPayroll(emp[i], tc[i]);
+
+    // Display Totals
+    displayTotals(ctc);
+   
+    // End Program
+    std::cout << std::endl;
+    std::cout << "\nPress any key to continue...\n";
+    return 0;
+}
+
+//======================
+//=== Calculate Data ===
+//======================
+void   calculateData(Employee, Timecard, CompanyTimecard) {
+    
+}
+
+//=======================
+//=== Display Payroll ===
+//=======================
+void displayPayroll(Employee emp, Timecard tc) {
+    std::cout << std::left
+              << std::setw(4)  << emp.id
+              << std::setw(20) << emp.name
+              << std::right
+              << std::setw(15) << tc.grossPay
+              << std::setw(8)  << tc.tax
+              << std::setw(9)  << tc.netPay
+              << std::endl;
+}
+
+//===================================
+//=== Display Payroll Report Menu ===
+//===================================
+void displayPayrollReportMenu() {
     std::cout << "Payroll Report\n\n";
     std::cout << std::left;
     std::cout << std::setw(4)  << "ID"
@@ -88,27 +146,15 @@ int main() {
               << std::setw(8)  << "Tax"
               << std::setw(9)  << "Net Pay"
               << std::endl;
-    for (int i=0; i<NUM_EMP; ++i) {
-    std::cout << std::left
-              << std::setw(4)  << emp[i].id
-              << std::setw(20) << emp[i].name
-              << std::right
-              << std::setw(15) << tc[i].grossPay
-              << std::setw(8)  << tc[i].tax
-              << std::setw(9)  << tc[i].netPay
-              << std::endl;
-    }
-    // Display Totals
+}
+
+//=====================
+//=== Display Totals ===
+//=====================
+void   displayTotals(CompanyTimecard ctc) {
     std::cout << std::endl;
     std::cout <<   "Total Gross Pay $ " << ctc.totalGrossPay
-              << "\nTotal Net Pay   $ " << ctc.totalNetPay
-              << std::endl;
-    
-    std::cout << "\nPress any key to continue...";
-    std::cin;
-    std::cout << std::endl;
-
-    return 0;
+              << "\nTotal Net Pay   $ " << ctc.totalNetPay;
 }
 
 //=====================
