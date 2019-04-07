@@ -3,7 +3,7 @@ Date Class
 :Author: David Boyd
 :Date: Spring 2018
 
-This program stores a date through implementing a user-defined class called: **Class**.
+This program stores a date through implementing a user-defined class called: **Date**.
 
 Member Functions
 =================
