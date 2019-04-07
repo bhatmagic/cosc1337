@@ -6,7 +6,7 @@
 struct Employee {
     int    id;
     double payRate;
-    bool   type;  // 0=union, 1=mgmt
+    bool   type;  // union=0, mgmt=1
     std::string name;
 };
 
@@ -75,9 +75,10 @@ int main() {
         ctc.totalNetPay   += tc[i].netPay;
     }
 
+    // Set Currency Format
+    std::cout << std::fixed << std::setprecision(2);
+
     // Display Payroll Report
-        // Set Currency Format
-        std::cout << std::fixed << std::setprecision(2);
     std::cout << "Payroll Report\n\n";
     std::cout << std::left;
     std::cout << std::setw(4)  << "ID"
@@ -108,30 +109,31 @@ int main() {
     std::cout << std::endl;
 
     return 0;
-
 }
-   
-double getGrossPay(Employee emp,
-                   Timecard comptc) {
-    double otHours = 0,
-           totalOTPay  = 0,
-           regPay = 0;
 
-    // If employee is union
-    if (emp.type == 0) {
-        if (comptc.hours > 40) {
-            otHours = comptc.hours - FTHOURS; 
-            regPay = (otHours * totalOTPay);
-        }
-        regPay = (emp.payRate * comptc.hours);
-        return (regPay + otHours); 
-    } 
-    // If employee is managment
-    else {
-        return (emp.payRate * comptc.hours);
+//=====================
+//=== Get Gross Pay ===   
+//=====================
+double getGrossPay(Employee emp,
+                   Timecard tc) {
+    double regPay  = 0,
+           otHours = 0,
+           totalOTPay = 0;
+
+    // Union emp & > FT Hours
+    if (emp.type == 0 && tc.hours > 40) {
+        otHours    = tc.hours - FTHOURS; 
+        totalOTPay = (emp.payRate * OTPAYRATE * otHours);
+        regPay     = (emp.payRate * FTHOURS); 
+        return (regPay + totalOTPay); 
+    } else {
+        return (emp.payRate * tc.hours);
     }
 }
 
+//===============
+//=== Get Tax ===
+//===============
 double getTax(Timecard tcard) {
     return (tcard.grossPay * TAX);
 }
