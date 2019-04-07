@@ -19,7 +19,7 @@ Contents
 +---------------------+-------------+
 | Date Class          | Completed   |
 +---------------------+-------------+
-| Payroll Verion 1.0  | In-Progress |
+| Payroll Verion 1.0  | Completed   |
 +---------------------+-------------+
 | Monkey Food         | In-Progress |
 +---------------------+-------------+
