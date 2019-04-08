@@ -17,17 +17,17 @@ Program creates a report that includes the following information:
 	- The least amount of food eaten on any day during the week by any one monkey. Note: A separate value-returning function finds the smallest amount of food.
 	- The greatest amount of food eaten on any day during the week by any one monkey. Note: A separate value-returning function finds the largest amount of food.
 
-The screen dialog display (user input is shown in bold)::
+The screen dialog display::
 
-	Enter pounds of food eaten by monkey 1 on Sun: **2.9**
-	Enter pounds of food eaten by monkey 1 on Mon: **3.3**
-	Enter pounds of food eaten by monkey 1 on Tue: **2.1**
-	Enter pounds of food eaten by monkey 1 on Wed: **3.7**
-	Enter pounds of food eaten by monkey 1 on Thu: **2.2**
-	Enter pounds of food eaten by monkey 1 on Fri: **3.5**
-	Enter pounds of food eaten by monkey 1 on Sat: **3.4**
+	Enter pounds of food eaten by monkey 1 on Sun: 2.9
+	Enter pounds of food eaten by monkey 1 on Mon: 3.3
+	Enter pounds of food eaten by monkey 1 on Tue: 2.1
+	Enter pounds of food eaten by monkey 1 on Wed: 3.7
+	Enter pounds of food eaten by monkey 1 on Thu: 2.2
+	Enter pounds of food eaten by monkey 1 on Fri: 3.5
+	Enter pounds of food eaten by monkey 1 on Sat: 3.4
 
-	Enter pounds of food eaten by monkey 2 on Sun: **4.4**
+	Enter pounds of food eaten by monkey 2 on Sun: 4.4
 	...
 
 Output
