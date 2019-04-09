@@ -97,8 +97,13 @@ int main(void) {
     //
     //
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
+        // set greatest val = 1st monkey per day/col
+        M_FOOD_CALC[2][i] = M_FOOD[0][i];
         for (int j=0; j<NUM_MONKEYS; ++j) {
-
+            // if val 1 < val 2, then val 1 = val 2
+            if (M_FOOD_CALC[2][i] < M_FOOD[j][i]) {
+                M_FOOD_CALC[2][i] = M_FOOD[j][i];
+            }
         }
     }
 
