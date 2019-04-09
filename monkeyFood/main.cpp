@@ -9,13 +9,11 @@
 //=== Globar Vars ===
 //===================
 const int   NUM_MONKEYS  = 3,
-      DAYS_OF_WEEK = 7;
-enum  DAYS_NAME[DAYS_OF_WEEK] = { 
-            "Monkey",
+            DAYS_IN_WEEK = 7;
+std::string DAYS_NAME[DAYS_IN_WEEK] = { 
             "SUN", "MON", "TUE", "WED",
-            "THU", "FRI", "SAT"
-       };
-float M_FOOD[NUM_MONKEYS][DAYS_OF_WEEK];
+            "THU", "FRI", "SAT"       };
+float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK];
 
 //===========================
 //=== Function Prototypes ===
@@ -30,21 +28,25 @@ int main(void) {
     // Declare variables
 
 
-    
-
     // Get data
-    std::cout << "Enter pounds of food eaten by monkey " << " 1 "
-              << " on " << " SUN " <<  ": ";
-    std::cin >> M_FOOD[0][0];
+    for (int monkey=0; monkey<NUM_MONKEYS; ++monkey) {
+        for (auto day : DAYS_NAME) {
+            std::cout << "Enter pounds of food eaten by monkey "
+                      << monkey+1 << " on " << day <<  ": ";
+            std::cin >> M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK];
+        }
+        std::cout << std::endl;
+    }
     
 
     // Calculate data
 
 
     // Display data
-    for ( auto:i < 
-    std::cout << "    1    ";
-    std::cout << M_FOOD[0][0] << std::endl;
+    std::cout << std::endl;
+    for (auto day : DAYS_NAME)
+        std::cout << day << " ";
+    std::cout << std::endl;
 
 
 
