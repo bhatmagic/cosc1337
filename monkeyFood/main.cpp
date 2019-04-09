@@ -18,34 +18,28 @@ float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK]    = {0},
 //===========================
 //=== Function Prototypes ===
 //===========================
-float getEatDailyAvg();
-float getEatDailyGreatest();
-float getEatDailyLeast();
-void  display();
-void  setMonkeyFood();
+void getEatDailyAvg();
+void getEatDailyGreatest();
+void getEatDailyLeast();
+void display();
+void setMonkeyFood();
 
 //============
 //=== Main ===
 //============
 int main(void) {
     
-    // Declare variables
-    float avg      = 0,
-          least    = 0,
-          greatest = 0;
-
     // Get data
     setMonkeyFood();
 
     // Calculate data
-    avg = getEatDailyAvg();
-    least = getEatDailyGreatest();
-    greatest = getEatDailyLeast();
+    getEatDailyAvg();
+    getEatDailyGreatest();
+    getEatDailyLeast();
 
     // Display data
     std::cout << std::endl;
     display();
-
 
     // End program
     return 0;
@@ -54,7 +48,7 @@ int main(void) {
 //===========================
 //=== Get Eaten Daily Avg ===
 //===========================
-float getEatDailyAvg() {
+void getEatDailyAvg() {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         for (int j=0; j<NUM_MONKEYS; ++j) {
             M_FOOD_CALC[0][i] += M_FOOD[j][i];
@@ -66,7 +60,7 @@ float getEatDailyAvg() {
 //=============================
 //=== Get Eaten Daily Least ===
 //=============================
-float getEatDailyLeast() {
+void getEatDailyLeast() {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         // set least val = 1st monkey per day/col
         M_FOOD_CALC[1][i] = M_FOOD[0][i];
@@ -82,7 +76,7 @@ float getEatDailyLeast() {
 //================================
 //=== Get Eaten Daily Greatest ===
 //================================
-float getEatDailyGreatest() {
+void getEatDailyGreatest() {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         // set greatest val = 1st monkey per day/col
         M_FOOD_CALC[2][i] = M_FOOD[0][i];
