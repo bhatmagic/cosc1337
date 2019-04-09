@@ -46,9 +46,18 @@ int main(void) {
     }
     
 
+
+
+
+
+
     // Calculate data
 
     // getAvgEatenDay
+    //
+    //
+    //
+    //
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         for (int j=0; j<NUM_MONKEYS; ++j) {
             M_FOOD_CALC[0][i] += M_FOOD[j][i];
@@ -56,13 +65,50 @@ int main(void) {
         M_FOOD_CALC[0][i] = (M_FOOD_CALC[0][i]/NUM_MONKEYS);
     }
 
-    std::cout << "Daily Avg of Food Eaten: \n";
+    std::cout << std::endl;
+    std::cout << "The average food eaten per day by all monkeys          : ";
     for (int i=0; i<7; ++i)
         std::cout << M_FOOD_CALC[0][i] << ",  ";
     
     // getLeastEatenDay
+    //
+    //
+    //
+    //
+    for (int i=0; i<DAYS_IN_WEEK; ++i) { 
+        // set least val = 1st monkey per day/col
+        M_FOOD_CALC[1][i] = M_FOOD[0][i];
+        for (int j=0; j<NUM_MONKEYS; ++j) {
+            // if val 1 > val 2, then val 1 = val 2
+            if (M_FOOD_CALC[1][i] > M_FOOD[j][i]) {
+                M_FOOD_CALC[1][i] = M_FOOD[j][i];
+            }
+        }
+    }
+
+    std::cout << std::endl;
+    std::cout << "The least amount of food eaten by any monkey           : ";
+    for (int i=0; i<7; ++i)
+        std::cout << M_FOOD_CALC[1][i] << ",  ";
 
     // getGreatestEatenDay
+    //
+    //
+    //
+    //
+    for (int i=0; i<DAYS_IN_WEEK; ++i) { 
+        for (int j=0; j<NUM_MONKEYS; ++j) {
+
+        }
+    }
+
+    std::cout << std::endl;
+    std::cout << "The largest amount of food eaten per day by any monkey : ";
+    for (int i=0; i<7; ++i)
+        std::cout << M_FOOD_CALC[2][i] << ",  ";
+
+
+
 
 
     // Display data
