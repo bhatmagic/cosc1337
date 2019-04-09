@@ -1,9 +1,7 @@
 // Copyright 2019 David Boyd
 #include <iostream>
 #include <string>
-
-
-
+#include <iomanip>
 
 //===================
 //=== Globar Vars ===
@@ -26,14 +24,19 @@ float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK];
 int main(void) {
     
     // Declare variables
+    float sum      = 0,
+          least    = 0,
+          greatest = 0;
 
+    // Set format to 1 dec
+    std::cout << std::fixed << std::setprecision(1);
 
     // Get data
-    for (int monkey=0; monkey<NUM_MONKEYS; ++monkey) {
-        for (auto day : DAYS_NAME) {
+    for (int i=0; i<NUM_MONKEYS; ++i) {
+        for (int j=0; j<DAYS_IN_WEEK; ++j) {
             std::cout << "Enter pounds of food eaten by monkey "
-                      << monkey+1 << " on " << day <<  ": ";
-            std::cin >> M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK];
+                      << i+1 << " on " << j+1 <<  ": ";
+            std::cin >> M_FOOD[i][j];
         }
         std::cout << std::endl;
     }
@@ -41,14 +44,29 @@ int main(void) {
 
     // Calculate data
 
+    // getAvgEatenDay
+    for (int i=0; i<NUM_MONKEYS; ++i) { 
+        for (int j=0; j<DAYS_IN_WEEK; ++j) {
+            sum += M_FOOD[i][j];
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "\nSum = " << sum << std:: endl;
+    
+    // getLeastEatenDay
+
+    // getGreatestEatenDay
+
 
     // Display data
-    std::cout << std::endl;
+    std::cout << "\nMonkey ";
     for (auto day : DAYS_NAME)
         std::cout << day << " ";
     std::cout << std::endl;
 
 
 
+    // End program
     return 0;
 }
