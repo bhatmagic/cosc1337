@@ -21,6 +21,7 @@ float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK]    = {0},
 float getEatDailyAvg(float *);
 float getEatDailyGreatest(float *);
 float getEatDailyLeast(float *);
+void  display(float *);
 void  setMonkeyFood(float *);
 
 //============
@@ -126,6 +127,14 @@ float getEatDailyLeast(float *) {
 //=== Get Eaten Daily Greatest ===
 //================================
 float getEatDailyGreatest(float *) {
+    
+}
+
+
+//====================
+//=== Display Data ===
+//====================
+void display(float *) {
     
 }
 
