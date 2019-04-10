@@ -9,7 +9,7 @@
 const int   NUM_MONKEYS  = 3,
             DAYS_IN_WEEK = 7,
             FUNCTIONS    = 3;
-std::string DAYS_NAME[DAYS_IN_WEEK] = { 
+std::string DAYS_NAME[DAYS_IN_WEEK] = {
             "SUN", "MON", "TUE", "WED",
             "THU", "FRI", "SAT"       };
 float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK]    = {0};
@@ -47,6 +47,7 @@ int main(void) {
     // Display data
     std::cout << std::endl;
     displayInput();
+    std::cout << std::endl;
     displayTotals(avg, least, greatest);
     std::cout << std::endl;
 
@@ -70,7 +71,6 @@ float getEatDailyAvg() {
 //=== Get Eaten Daily Least ===
 //=============================
 float getEatDailyLeast() {
-    // set least val = 1st monkey per day/col
     float least = M_FOOD[0][0];
 
     // Iterate through 2D array
@@ -87,11 +87,10 @@ float getEatDailyLeast() {
 //=== Get Eaten Daily Greatest ===
 //================================
 float getEatDailyGreatest() {
-    // set greatest val = 1st monkey per day/col
     float great = M_FOOD[0][0];
 
     // Iterate through 2D array
-    for (int i=0; i<DAYS_IN_WEEK; ++i) { 
+    for (int i=0; i<DAYS_IN_WEEK; ++i) {
         for (int j=0; j<NUM_MONKEYS; ++j) {
             if (great < M_FOOD[j][i])
                 great = M_FOOD[j][i];
@@ -104,10 +103,6 @@ float getEatDailyGreatest() {
 //=== Display Data ===
 //====================
 void displayTotals(float avg, float least, float greatest) {
-
-
-    std::cout << std::endl;
-
     // Display calculated data
     std::cout << "The average food eaten per day by all monkeys         : "
               << avg << std::endl;
@@ -123,13 +118,13 @@ void displayTotals(float avg, float least, float greatest) {
 void displayInput() {
     // Display HEADER
     std::cout << "Pounds of Food Eaten by Monkey and Day of Week\n";
-    
+
     // Display header row
     std::cout << "\nMonkey";
     for (auto day : DAYS_NAME)
         std::cout << "\t" << day ;
     std::cout << std::endl;
-    // Display monkey# | x.x# | ...
+    // Display monkey# | foodEaten | ...
     for (int i=0; i<3; ++i) {
         std::cout << i+1;
         for (int j=0; j<7; ++j)
