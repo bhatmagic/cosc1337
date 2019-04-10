@@ -18,9 +18,9 @@ float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK]    = {0},
 //===========================
 //=== Function Prototypes ===
 //===========================
-float getEatDailyAvg();
-float getEatDailyGreatest();
-float getEatDailyLeast();
+float getEatDailyAvg(int);
+float getEatDailyGreatest(int);
+float getEatDailyLeast(int);
 void display();
 void setMonkeyFood();
 
@@ -28,14 +28,16 @@ void setMonkeyFood();
 //=== Main ===
 //============
 int main(void) {
+    // Declare var
+    int day = 0;
     
     // Get data
     setMonkeyFood();
 
     // Calculate data
-    getEatDailyAvg();
-    getEatDailyGreatest();
-    getEatDailyLeast();
+    getEatDailyAvg(day);
+    getEatDailyGreatest(day);
+    getEatDailyLeast(day);
 
     // Display data
     std::cout << std::endl;
@@ -48,19 +50,20 @@ int main(void) {
 //===========================
 //=== Get Eaten Daily Avg ===
 //===========================
-float getEatDailyAvg() {
+float getEatDailyAvg(int day) {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         for (int j=0; j<NUM_MONKEYS; ++j) {
             M_FOOD_CALC[0][i] += M_FOOD[j][i];
         }
         M_FOOD_CALC[0][i] = (M_FOOD_CALC[0][i]/NUM_MONKEYS);
     }
+    return M_FOOD_CALC[0][day];
 }
 
 //=============================
 //=== Get Eaten Daily Least ===
 //=============================
-float getEatDailyLeast() {
+float getEatDailyLeast(int day) {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         // set least val = 1st monkey per day/col
         M_FOOD_CALC[1][i] = M_FOOD[0][i];
@@ -71,12 +74,13 @@ float getEatDailyLeast() {
             }
         }
     }
+    return M_FOOD_CALC[1][day];
 }
 
 //================================
 //=== Get Eaten Daily Greatest ===
 //================================
-float getEatDailyGreatest() {
+float getEatDailyGreatest(int day) {
     for (int i=0; i<DAYS_IN_WEEK; ++i) { 
         // set greatest val = 1st monkey per day/col
         M_FOOD_CALC[2][i] = M_FOOD[0][i];
@@ -87,6 +91,7 @@ float getEatDailyGreatest() {
             }
         }
     }
+    return M_FOOD_CALC[2][day];
 }
 
 //====================
