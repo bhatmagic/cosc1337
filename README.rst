@@ -21,7 +21,7 @@ Contents
 +---------------------+-------------+
 | Payroll Verion 1.0  | Completed   |
 +---------------------+-------------+
-| Monkey Food         | In-Progress |
+| Monkey Food         | Completed   |
 +---------------------+-------------+
 | Postal Packages     | In-Progress |
 +---------------------+-------------+
