@@ -12,7 +12,7 @@ const int   NUM_MONKEYS  = 3,
 std::string DAYS_NAME[DAYS_IN_WEEK] = {
             "SUN", "MON", "TUE", "WED",
             "THU", "FRI", "SAT"       };
-float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK]    = {0};
+float M_FOOD[NUM_MONKEYS][DAYS_IN_WEEK] = {0};
 
 //===========================
 //=== Function Prototypes ===
