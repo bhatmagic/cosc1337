@@ -126,7 +126,7 @@ void displayInput() {
     std::cout << std::endl;
     // Display monkey# | foodEaten | ...
     for (int i=0; i<3; ++i) {
-        std::cout << i+1;
+        std::cout << std::right << std::setw(6) << i+1;
         for (int j=0; j<7; ++j)
             std::cout << "\t" << M_FOOD[i][j];
         std::cout << std::endl;
@@ -138,9 +138,11 @@ void displayInput() {
 void setMonkeyFood() {
     for (int i=0; i<NUM_MONKEYS; ++i) {
         for (int j=0; j<DAYS_IN_WEEK; ++j) {
-            std::cout << "Enter pounds of food eaten by monkey "
-                      << i+1 << " on " << j+1 <<  ": ";
-            std::cin >> M_FOOD[i][j];
+            do {
+                std::cout << "Enter pounds of food eaten by monkey "
+                          << i+1 << " on " << DAYS_NAME[j] <<  ": ";
+                std::cin >> M_FOOD[i][j];
+                } while (M_FOOD[i][j] < 0);
         }
         std::cout << std::endl;
     }
