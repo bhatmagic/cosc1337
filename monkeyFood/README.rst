@@ -2,7 +2,7 @@ Monkey Food
 ############
 :Author: David Boyd
 :Date: Spring 2018
-:Status: INCOMPLETE
+:Status: COMPLETE
 
 A local zoo wants to keep track of how many pounds of food each of its three monkeys eats each day during a typical week. This program that stores this information in a two-dimensional 3 x 7 arrray, where each row represents a different monkey and each column represents a different day of the week. This program first has the user input the data for each monkey from the keyboard. The number of pounds of food eaten by one monkey in one day is a floating-point value.
 
