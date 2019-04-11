@@ -3,6 +3,7 @@ Programming Fundamentals
 :Author: David Boyd
 :Term: Spring 2018
 :Purpose: This repository holds simple C++ programs.
+:Notes: These programs are in the process of being re-written.
 
 Contents
 =========
