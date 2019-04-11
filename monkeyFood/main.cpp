@@ -8,7 +8,6 @@
 //===================
 const int   NUM_MONKEYS  = 3,
             DAYS_IN_WEEK = 7,
-            FUNCTIONS    = 3;
 std::string DAYS_NAME[DAYS_IN_WEEK] = {
             "SUN", "MON", "TUE", "WED",
             "THU", "FRI", "SAT"       };
@@ -99,9 +98,9 @@ float getEatDailyGreatest() {
     return great;
 }
 
-//====================
-//=== Display Data ===
-//====================
+//======================
+//=== Display Totals ===
+//======================
 void displayTotals(float avg, float least, float greatest) {
     // Display calculated data
     std::cout << "The average food eaten per day by all monkeys         : "
