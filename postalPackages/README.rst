@@ -133,7 +133,7 @@ The screen dialog outputs this (user input is shown in bold):
 | Weight     :         7
 | Cost       :      9.90
 |
-| Enter package weight and 3 dimensions: **21 12 15 12****
+| Enter package weight and 3 dimensions: **21 12 15 12**
 |
 | Transaction:         3
 | Status     :  Accepted
