@@ -103,12 +103,10 @@ program is designed to run for long periods of time without running out of memor
 Each transaction prints
 ------------------------
 
-.. code-block::
-
-  the transaction number (start counting with 1)
-  whether the package was accepted or rejected
-  the package weight
-  the cost for shipping (if applicable)
+  - the transaction number (start counting with 1)
+  - whether the package was accepted or rejected
+  - the package weight
+  - the cost for shipping (if applicable)
   
 When the program ends, it prints the number of packages accepted for shipping and the number of packages rejected. Transactions that 
 contain invalid input will not be counted.
