@@ -90,7 +90,7 @@ Output
 =======
 
 This program consists of only two loops, a transaction processing loop and a cost search loop. 
-There is o input validation loop. If the package input is invalid, an error message prints then skips the normal 
+There is no input validation loop. If the package input is invalid, an error message prints then skips the normal 
 package processing.
 
 A single loop gets the input for the package information, processes the package and outputs some information about the package 
