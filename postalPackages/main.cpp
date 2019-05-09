@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-// class Package{}
+// struct Package{}
 
 //========================
 //=== Global Variables ===
@@ -21,10 +21,12 @@ int main(void) {
     // Declare variables
     double package_weight, 
            d1, d2, d3;  // Package dimensions
-    int transaction_counter = 0;
+    int transaction_counter = 0,
+        transaction_accepted = 0,
+        transaction_rejected = 0;
     double shipping_weight;  // will be referenced to WEIGHT_TO_COST[x][]
     double shipping_cost; // will be referenced to WEIGHT_TO_COST[][x]
-    bool status;
+    bool status = 0;
     double girth,
            largest_dim;
 
@@ -34,23 +36,17 @@ int main(void) {
               << "weight and 3 dimensions.\n"
               << "Enter -1 to quit.\n" << std:: endl;
     
-    while(1) {
-
+    do {
         // Get User Data
         do { // dim checker
             std::cout << "Enter package weight and 3 dimension: ";
             std::cin  >> package_weight;
-            if (package_weight == -1) break;
+            if (package_weight == -1) break; 
             if (package_weight > 50) // if weight>50 pounds
             status = 0;
             std::cin  >> d1;
             std::cin  >> d2;
             std::cin  >> d3;
-            if (d1 > 48 || d2 > 48 || d3 > 48) {  // if dim>3 feet
-                status = 0;
-            } else {
-                status = 1;
-            }
             if (d1 < 0 || d2 < 0 || d3 < 0)
                 std::cout << "Dimensions must be greater than 0.\n\n";
         } while (d1 < 0 || d2 < 0 || d3 < 0);     // if dim<0 in
@@ -62,12 +58,30 @@ int main(void) {
         if (d3 > largest_dim) largest_dim = d3;
         girth = 2*(d1+d2+d3-largest_dim);
 
+        // if dim>3ft || girth>5th
+        if (d1 > 48 || d2 > 48 || d3 > 48 || girth > 60) {
+            status = 0;
+            transaction_rejected++;
+        } else {
+            status = 1;
+            transaction_accepted++;
+        }
+
         // Display Results
-        std::cout << "Transaction: " << transaction_counter << std::endl;
-        std::cout << "Status: " << status << std::endl; 
-        std::cout << "Weight: " << shipping_weight << std::endl;
-        std::cout << "Cost: "   << shipping_cost   << std::endl;
-    }
+        if (package_weight == -1) {
+            std::cout << std::endl;
+        } else {
+            std::cout << "Transaction: " << transaction_counter << std::endl;
+            std::cout << "Status: " << status << std::endl; 
+            std::cout << "Weight: " << shipping_weight << std::endl;
+            std::cout << "Cost: "   << shipping_cost   << std::endl;
+        }
+    } while (package_weight != -1);
+
+    // Display EndPrgm Results
+    std::cout << "\nNumber of accepted packaged: " << transaction_accepted;
+    std::cout << "\nNumber of rejected packages: " << transaction_rejected;
+    std::cout << std::endl;
 
     return 0;
 }
