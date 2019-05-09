@@ -25,6 +25,8 @@ int main(void) {
     double shipping_weight;  // will be referenced to WEIGHT_TO_COST[x][]
     double shipping_cost; // will be referenced to WEIGHT_TO_COST[][x]
     bool status;
+    double girth,
+           largest_dim;
 
     // Display Menu
     std::cout << std::endl;
@@ -35,19 +37,32 @@ int main(void) {
     while(1) {
 
         // Get User Data
-        std::cout << "Enter package weight and 3 dimension: ";
-        std::cin  >> package_weight;
-        if (package_weight == -1) break;
-        std::cin  >> d1;
-        std::cin  >> d2;
-        std::cin  >> d3;
+        do { // dim checker
+            std::cout << "Enter package weight and 3 dimension: ";
+            std::cin  >> package_weight;
+            if (package_weight == -1) break;
+            if (package_weight > 50) // if weight>50 pounds
+            status = 0;
+            std::cin  >> d1;
+            std::cin  >> d2;
+            std::cin  >> d3;
+            if (d1 > 48 || d2 > 48 || d3 > 48) {  // if dim>3 feet
+                status = 0;
+            } else {
+                status = 1;
+            }
+            if (d1 < 0 || d2 < 0 || d3 < 0)
+                std::cout << "Dimensions must be greater than 0.\n\n";
+        } while (d1 < 0 || d2 < 0 || d3 < 0);     // if dim<0 in
 
         // Calculate Data
         transaction_counter++;
-        status = 1;  // if dimensions are within requirements
+        if (d1 > d2) largest_dim = d1;
+        else largest_dim =d2;
+        if (d3 > largest_dim) largest_dim = d3;
+        girth = 2*(d1+d2+d3-largest_dim);
 
         // Display Results
-
         std::cout << "Transaction: " << transaction_counter << std::endl;
         std::cout << "Status: " << status << std::endl; 
         std::cout << "Weight: " << shipping_weight << std::endl;
