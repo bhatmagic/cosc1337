@@ -22,31 +22,37 @@ int main(void) {
     double package_weight, 
            d1, d2, d3;  // Package dimensions
     int transaction_counter = 0;
-    int shipping_weight;  // will be referenced to WEIGHT_TO_COST[x][]
+    double shipping_weight;  // will be referenced to WEIGHT_TO_COST[x][]
     double shipping_cost; // will be referenced to WEIGHT_TO_COST[][x]
     bool status;
 
+    // Display Menu
+    std::cout << std::endl;
+    std::cout << "For each transaction, enter package "
+              << "weight and 3 dimensions.\n"
+              << "Enter -1 to quit.\n" << std:: endl;
     
-// WHILE INPUT != -1  ========================================================
-    // Get User Data
-    std::cout << "Enter package weight and 3 dimension: ";
-    std::cin  >> package_weight, d1, d2, d3; 
+    while(1) {
 
-    transaction_counter++;
-    status = 1;  // if dimensions are within requirements
+        // Get User Data
+        std::cout << "Enter package weight and 3 dimension: ";
+        std::cin  >> package_weight;
+        if (package_weight == -1) break;
+        std::cin  >> d1;
+        std::cin  >> d2;
+        std::cin  >> d3;
 
-    // Calculate Data
-    
+        // Calculate Data
+        transaction_counter++;
+        status = 1;  // if dimensions are within requirements
 
+        // Display Results
 
-    
-    // Display Results
-
-    std::cout << "Transaction: " << transaction_counter << std::endl;
-    std::cout << "Status: " << status << std::endl; 
-    std::cout << "Weight: " << shipping_weight << std::endl;
-    std::cout << "Cost: "   << shipping_cost   << std::endl;
-// END WHILE ==================================================================
+        std::cout << "Transaction: " << transaction_counter << std::endl;
+        std::cout << "Status: " << status << std::endl; 
+        std::cout << "Weight: " << shipping_weight << std::endl;
+        std::cout << "Cost: "   << shipping_cost   << std::endl;
+    }
 
     return 0;
 }
