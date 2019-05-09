@@ -14,11 +14,8 @@ Packages are accepted for shipping subject to the following restrictions:
   - The package weight must not exceed 50 pounds.
   - The package must not exceed 3 feet in length, width, or height.
   - The girth of the package must not exceed 5 feet. The girth is the circumference around the two smallest sides of the package.
-  - If side1, side2, and side3 are the lengths of the three sides, and largest is the largest of the three sides, then the girth 
-  can be calculated using: girth = 2 * ( side1 + side2 + side3 - largest )
-  - For each transaction (package to be shipped), the user enters the package weight followed by the 3 package dimensions 
-  in any order. The weight is specified as a whole number of pounds and the dimensions are specified as a whole number 
-  of inches.
+  - If side1, side2, and side3 are the lengths of the three sides, and largest is the largest of the three sides, then the girth can be calculated using: girth = 2 * ( side1 + side2 + side3 - largest )
+	- For each transaction (package to be shipped), the user enters the package weight followed by the 3 package dimensions in any order. The weight is specified as a whole number of pounds and the dimensions are specified as a whole number of inches.
 
 Instructions
 =============
