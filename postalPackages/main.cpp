@@ -6,12 +6,15 @@
 //=== Stucts ===
 //==============
 struct Package {
-    double wt = 0.0,
+    double cost = 0.0,
            dim1 = 0.0,
            dim2 = 0.0,
            dim3 = 0.0,
            girth = 0.0,
-           great_dim = 0.0;
+           great_dim = 0.0,
+           ship_cost;
+    int wt = 0.0,
+        ship_wt;
     bool status = 0;
 };
 
@@ -24,23 +27,27 @@ struct Transaction {
 //======================
 //=== Fns Prototypes ===
 //======================
-
 void calcPkgData(Package *, Transaction *);
 void display_menu();
 void display_pkgResults(Package *, Transaction *);
 void display_transResults(Transaction *);
+void set_ship_charge(Package *p);
 void format_money();
-void getPkgData();
+void setPkgData();
 void run(Package *, Transaction *);
 
 //========================
 //=== Global Variables ===
 //========================
-
-double WEIGHT_TO_COST [][14] = { 
-    {1, 1.50},   {2, 2.10},   {3, 4.00},   {5, 6.75},
-    {7, 9.90},   {10, 14.95}, {13, 19.40}, {16, 24.20},
-    {25, 31.90}, {30, 38.50}, {40, 44.80}, {45, 47.40}, {50, 55.20} }; 
+const int SIZE = 15;
+const int SHIPPING_WT[SIZE] = 
+    {  1,  2,  3,  4,  5,
+       7, 10, 13, 16, 20,
+      25, 30, 40, 45, 50 };
+const double SHIPPING_COST[SIZE] =  
+    {  1.50,  2.10,  4.00,  6.75,  9.90, 
+      14.95, 19.40, 24.20, 27.20, 31.90, 
+      38.50, 43.50, 44.80, 47.40, 55.20  };
 
 //============
 //=== Main ===
@@ -82,6 +89,18 @@ void calcPkgData(Package *p, Transaction *t) {
         t->accept++;
     }
     
+    // find shipping weight
+    set_ship_charge(p); 
+    
+}
+void set_ship_charge(Package *p) {
+    for (int i=0; i<SIZE; ++i) {
+        if (p->wt <= SHIPPING_WT[i]) {
+            p->ship_wt = SHIPPING_WT[i];
+            p->ship_cost = SHIPPING_COST[i];
+            break;
+        }
+    }
 }
 void display_menu() {
     std::cout << std::endl;
@@ -91,10 +110,15 @@ void display_menu() {
 }
 void display_pkgResults(Package *p, Transaction *t) {
     std::cout << "Transaction: " << t->count  << std::endl;
-    std::cout << "Status     : " << p->status << std::endl; 
-    std::cout << "Weight     : " << "0.00\n"; //shipping_weight << std::endl;
-    std::cout << "Cost       : " << "0.00\n"; //shipping_cost   << std::endl;
-    
+    std::cout << "Status     : "; // << p->status << std::endl; 
+    if (p->status == 1) { std::cout << "Accepted"; }
+    else {std::cout << "Rejected"; }
+    std::cout << std::endl;
+    std::cout << "Weight     : " << p->wt     << std::endl; 
+    std::cout << "Cost       : "; 
+    if (p->status == 0) { std::cout << "-"; } 
+    else {std::cout << p->ship_cost; }
+    std::cout << std::endl;
 }
 void display_transResults(Transaction *t) {
     std::cout << "\nNumber of accepted packaged: " << t->accept;
@@ -104,7 +128,7 @@ void display_transResults(Transaction *t) {
 void format_money(){
     std::cout << std::fixed << std::showpoint << std::setprecision(2);
 }
-void getPkgData(Package *p) { 
+void setPkgData(Package *p) { 
     do { 
         std::cout << "Enter package weight and 3 dimension: ";
         std::cin  >> p->wt;
@@ -123,7 +147,7 @@ void getPkgData(Package *p) {
 void run(Package *pkg, Transaction *trans) {
     do {
         // Get User Data
-        getPkgData(pkg);
+        setPkgData(pkg);
 
         // Calculate Data
         calcPkgData(pkg, trans);
