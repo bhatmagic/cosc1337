@@ -24,7 +24,7 @@ Contents
 +---------------------+-------------+
 | Monkey Food         | Completed   |
 +---------------------+-------------+
-| Postal Packages     | In-Progress |
+| Postal Packages     | Completed   |
 +---------------------+-------------+
 | Test Scores         | In-Progress |
 +---------------------+-------------+
