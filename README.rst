@@ -40,7 +40,7 @@ Compile:
 
 .. code-block::
 
-	g++ -o main \*.cpp
+	g++ -o main *.cpp
 
 Run:
 
