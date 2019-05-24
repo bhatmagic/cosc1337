@@ -32,3 +32,14 @@ Contents
 +---------------------+-------------+
 | Payroll Version 3.0 | In-Progress |
 +---------------------+-------------+
+
+To Run Programs
+===============
+
+Compile:
+.. code-block::
+	g++ -o main \*.cpp
+
+Run:
+.. code-block::
+	./main
