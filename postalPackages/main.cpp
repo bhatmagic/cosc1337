@@ -31,19 +31,20 @@ void calcPkgData(Package *, Transaction *);
 void display_menu();
 void display_pkgResults(Package *, Transaction *);
 void display_transResults(Transaction *);
-void set_ship_charge(Package *p);
+void get_ship_charge(Package *p);
 void format_money();
-void setPkgData();
+void getPkgData();
 void run(Package *, Transaction *);
 
 //========================
 //=== Global Variables ===
 //========================
+const int DISP_WIDTH = 10;
 const int SIZE = 15;
 const int SHIPPING_WT[SIZE] = 
-    {  1,  2,  3,  4,  5,
-       7, 10, 13, 16, 20,
-      25, 30, 40, 45, 50 };
+    {  1,  2,  3,  5,  7,
+      10, 13, 16, 20, 25,
+      30, 35, 40, 45, 50  };
 const double SHIPPING_COST[SIZE] =  
     {  1.50,  2.10,  4.00,  6.75,  9.90, 
       14.95, 19.40, 24.20, 27.20, 31.90, 
@@ -90,10 +91,10 @@ void calcPkgData(Package *p, Transaction *t) {
     }
     
     // find shipping weight
-    set_ship_charge(p); 
+    get_ship_charge(p); 
     
 }
-void set_ship_charge(Package *p) {
+void get_ship_charge(Package *p) {
     for (int i=0; i<SIZE; ++i) {
         if (p->wt <= SHIPPING_WT[i]) {
             p->ship_wt = SHIPPING_WT[i];
@@ -109,16 +110,18 @@ void display_menu() {
               << "Enter -1 to quit.\n" << std:: endl;
 }
 void display_pkgResults(Package *p, Transaction *t) {
-    std::cout << "Transaction: " << t->count  << std::endl;
-    std::cout << "Status     : "; // << p->status << std::endl; 
-    if (p->status == 1) { std::cout << "Accepted"; }
-    else {std::cout << "Rejected"; }
-    std::cout << std::endl;
-    std::cout << "Weight     : " << p->wt     << std::endl; 
+    int width = 10;
+    std::cout << std::right;
+    std::cout << "Transaction: " << std::setw(width) << t->count  << std::endl;
+    std::cout << "Status     : ";
+        if (p->status == 1) { std::cout << std::setw(width) << " Accepted";
+        } else {std::cout << std::setw(width) << "Rejected"; }
+        std::cout << std::endl;
+    std::cout << "Weight     : " << std::setw(width) << p->wt     << std::endl; 
     std::cout << "Cost       : "; 
-    if (p->status == 0) { std::cout << "-"; } 
-    else {std::cout << p->ship_cost; }
-    std::cout << std::endl;
+        if (p->status == 0) { std::cout << std::setw(width) << "-";
+        } else {std::cout << std::setw(width) << p->ship_cost; }
+        std::cout << std::endl;
 }
 void display_transResults(Transaction *t) {
     std::cout << "\nNumber of accepted packaged: " << t->accept;
@@ -128,7 +131,7 @@ void display_transResults(Transaction *t) {
 void format_money(){
     std::cout << std::fixed << std::showpoint << std::setprecision(2);
 }
-void setPkgData(Package *p) { 
+void getPkgData(Package *p) { 
     do { 
         std::cout << "Enter package weight and 3 dimension: ";
         std::cin  >> p->wt;
@@ -139,7 +142,9 @@ void setPkgData(Package *p) {
         if (p->wt > 50 || p->wt <= 0) { p->status = 0; }
         else {p->status = 1; }
         if (p->wt <= 0 || p->dim1 <= 0 || p->dim2 <= 0 || p->dim3 <= 0) {
-            std::cout << "Weight and dimensions must be greater than 0.\n\n";
+            std::cout << "\nError - package weight and dimensions"
+                      << " must be larger than 0" << std::endl
+                      << "Please re-enter transaction\n" << std::endl;
         }
     } while (p->wt <= 0 ||  p->dim1 <= 0 || p->dim2 <= 0 || p->dim3 <= 0);
     
@@ -147,7 +152,7 @@ void setPkgData(Package *p) {
 void run(Package *pkg, Transaction *trans) {
     do {
         // Get User Data
-        setPkgData(pkg);
+        getPkgData(pkg);
 
         // Calculate Data
         calcPkgData(pkg, trans);
