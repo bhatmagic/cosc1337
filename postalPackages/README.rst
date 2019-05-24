@@ -2,7 +2,7 @@ Postal Packages
 #################
 :Author: David Boyd
 :Term: Spring 2018
-:Status: IN-PROGRESS
+:Status: Completed
 
 Lone Star Package Service ships packages within the state of Texas. 
 
