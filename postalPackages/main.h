@@ -3,7 +3,6 @@
 //========================
 //=== Global Variables ===
 //========================
-const int DISP_WIDTH = 10;
 const int SIZE = 15;
 const int SHIPPING_WT[SIZE] = 
     {  1,  2,  3,  5,  7,
