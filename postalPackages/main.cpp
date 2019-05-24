@@ -5,18 +5,14 @@
 //==============
 //=== Stucts ===
 //==============
-class Package {
-    public:
-        double wt = 0.0,
-               dim1 = 0.0,
-               dim2 = 0.0,
-               dim3 = 0.0,
-               girth = 0.0,
-               great_dim = 0.0;
-        bool status = 0;
-
-        bool dimStatus() {
-                };
+struct Package {
+    double wt = 0.0,
+           dim1 = 0.0,
+           dim2 = 0.0,
+           dim3 = 0.0,
+           girth = 0.0,
+           great_dim = 0.0;
+    bool status = 0;
 };
 
 struct Transaction {
