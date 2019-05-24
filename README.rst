@@ -33,8 +33,8 @@ Contents
 | Payroll Version 3.0 | In-Progress |
 +---------------------+-------------+
 
-To Run Programs
-===============
+To Run Programs using Linux Terminal
+====================================
 
 Compile:
 
