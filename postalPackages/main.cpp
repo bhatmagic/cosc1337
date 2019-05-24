@@ -75,6 +75,7 @@ int main(void) {
 //============================
 //=== Function Definitions ===
 //============================
+//--- Calculate Package Data ---------------------------------------------------
 void calcPkgData(Package *p, Transaction *t) {
     t->count++;
     
@@ -99,6 +100,7 @@ void calcPkgData(Package *p, Transaction *t) {
     
 }
 
+//--- Display Menu -------------------------------------------------------------
 void display_menu() {
     std::cout << std::endl;
     std::cout << "For each transaction, enter package "
@@ -106,6 +108,7 @@ void display_menu() {
               << "Enter -1 to quit.\n" << std:: endl;
 }
 
+//--- Display Package Results  -------------------------------------------------
 void display_pkgResults(Package *p, Transaction *t) {
     int width = 10;
     std::cout << std::right;
@@ -124,16 +127,19 @@ void display_pkgResults(Package *p, Transaction *t) {
     std::cout << std::endl;
 }
 
+//--- Display Transaction Results  ---------------------------------------------
 void display_transResults(Transaction *t) {
     std::cout << "\nNumber of accepted packaged: " << t->accept;
     std::cout << "\nNumber of rejected packages: " << t->reject;
     std::cout << std::endl;
 }
 
+//--- Format Money Numbers -----------------------------------------------------
 void format_money(){
     std::cout << std::fixed << std::showpoint << std::setprecision(2);
 }
 
+//--- Get Shipping Charge ------------------------------------------------------
 void get_ship_charge(Package *p) {
     for (int i=0; i<SIZE; ++i) {
         if (p->wt <= SHIPPING_WT[i]) {
@@ -144,6 +150,7 @@ void get_ship_charge(Package *p) {
     }
 }
 
+//--- Get Package Data ---------------------------------------------------------
 void getPkgData(Package *p) { 
     do { 
         std::cout << "Enter package weight and 3 dimension: ";
@@ -162,6 +169,7 @@ void getPkgData(Package *p) {
     
 }
 
+//--- Run Program --------------------------------------------------------------
 void run(Package *pkg, Transaction *trans) {
     do {
         // Get User Data
