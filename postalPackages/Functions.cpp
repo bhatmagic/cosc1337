@@ -9,9 +9,13 @@ void calcPkgData(Package *p, Transaction *t) {
     t->count++;
     
     // find greatest dimension
-    if (p->dim1 > p->dim2) { p->great_dim = p->dim1;
-    } else { p->great_dim = p->dim2; }
-    if (p->dim3 > p->great_dim) p->great_dim= p->dim3;
+    if (p->dim1 > p->dim2) { 
+        p->great_dim = p->dim1;
+    } else { 
+        p->great_dim = p->dim2; }
+    if (p->dim3 > p->great_dim) { 
+        p->great_dim= p->dim3; 
+    }
 
     // calculate girth
     p->girth = 2*(p->dim1+p->dim2+p->dim3-p->great_dim);
