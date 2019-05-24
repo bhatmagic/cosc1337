@@ -26,12 +26,6 @@ Contents
 +---------------------+-------------+
 | Postal Packages     | Completed   |
 +---------------------+-------------+
-| Test Scores         | In-Progress |
-+---------------------+-------------+
-| Payroll Version 2.0 | In-Progress |
-+---------------------+-------------+
-| Payroll Version 3.0 | In-Progress |
-+---------------------+-------------+
 
 To Run Programs using Linux Terminal
 ====================================
