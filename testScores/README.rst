@@ -33,7 +33,7 @@ Sample Output
 
 The student's name will be displayed along with the grade.  A struct holds the name and grade for one student.  The name is a C++ string object.  The array will now be an array of structs.  The sample display output looks like this::
 
-	Name			Score
+	Name            Score
 	---------------------
 	Jim Smith          75
 	Victor Montero     81
