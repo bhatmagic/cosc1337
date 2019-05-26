@@ -7,7 +7,8 @@
 //=== Structs ===
 //===============
 struct Student {
-    int         grade;
+    int grade,
+        strLen;  // used for display-format
     std::string name;
 };
 
@@ -15,9 +16,9 @@ struct Student {
 //=== Fns Prototypes ===
 //======================
 double calcAverage(Student *, int);
-void   displayResults(Student *, int, double, int);
-void   getGrades(Student *, int, int);
-int    getLongestName(Student *, int);
+void   displayResults(Student *, int, double);
+void   getGrades(Student *, int);
+void   getLongestName(Student *, int);
 void   getNames(Student *, int);
 int    getNumStudents();
 void   sortGrades(Student *, int);
@@ -28,8 +29,7 @@ void   sortGrades(Student *, int);
 int main () {
 
     Student *classroom = nullptr;
-    int nStudents,
-        strLength;
+    int nStudents;
     double average;
 
     // Get number of students 
@@ -40,21 +40,21 @@ int main () {
     // to hold number of students
     classroom = new Student[nStudents];  // Allocate memory 
 
-    // Get student names and grades
+    // Get student data
     getNames(classroom, nStudents);
     std::cout << std::endl;
-    strLength = getLongestName(classroom, nStudents);
-    getGrades(classroom, nStudents, strLength);
+    getLongestName(classroom, nStudents);
+    getGrades(classroom, nStudents);
     std::cout << std::endl;
 
-    // Bubble sort array based on stduent grades
+    // Bubble sort array based on student grades
     sortGrades(classroom, nStudents);
 
     // Calculate the total grades
     average = calcAverage(classroom, nStudents);
 
     // Display the results
-    displayResults(classroom, nStudents, average, strLength);
+    displayResults(classroom, nStudents, average);
     std::cout << std::endl;
 
     // Free dynamically allocated memory
@@ -77,10 +77,12 @@ double calcAverage(Student *s, int size) {
 }
 
 //--- Display Results ----------------------------------------------------------
-void displayResults(Student *s, int size, double avg, int w1) {
-    int w2 =  5;  // char width for averages
+void displayResults(Student *s, int size, double avg) {
+    int w1 = s[0].strLen;
+    int w2 =  6;  // char width for averages
     char dash = '-';
 
+    // Format Numbers
     std::cout << std::setprecision(1) << std::fixed << std::showpoint;
 
     // Print Menu
@@ -106,8 +108,9 @@ void displayResults(Student *s, int size, double avg, int w1) {
                   << std::setw(w2) << std::right << avg << std::endl;
 }
 
-//--- Get Grades ---------------------------------------------------------------
-void getGrades(Student *s, int size, int w1) {
+//--- Get Student Grades -------------------------------------------------------
+void getGrades(Student *s, int size) {
+    int w1 = s[0].strLen;
     std::cout << "Enter the grades below." << std::endl;
     for (int i=0; i<size; ++i) {
         do {  // validate grades between 0 and 105
@@ -139,14 +142,14 @@ int getNumStudents() {
 }
 
 //--- Find Longest Name --------------------------------------------------------
-int getLongestName(Student *s, int size) {
+void getLongestName(Student *s, int size) {
     int w1 = s[0].name.length();
     for (int i=0; i<size; ++i) {
        if (w1 < s[i].name.length()) {
             w1 = s[i].name.length();
        }
     }
-    return w1;
+    s[0].strLen = w1;
 }
 
 //--- Sort Grades --------------------------------------------------------------
