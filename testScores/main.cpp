@@ -15,7 +15,7 @@ struct Student {
 //=== Fns Prototypes ===
 //======================
 double calcAverage(Student *, int);
-void   displayResults(Student *, int);
+void   displayResults(Student *, int, double);
 void   getGrades(Student *, int);
 void   getNames(Student *, int);
 int    getNumStudents();
@@ -32,6 +32,7 @@ int main () {
 
     // Get number of students 
     nStudents = getNumStudents();
+    std::cout << std::endl;
     
     // Dynamically allocate an array large enough
     // to hold number of students
@@ -39,7 +40,9 @@ int main () {
 
     // Get student names and grades
     getNames(classroom, nStudents);
+    std::cout << std::endl;
     getGrades(classroom, nStudents);
+    std::cout << std::endl;
 
     // Bubble sort array based on stduent grades
     sortGrades(classroom, nStudents);
@@ -48,7 +51,8 @@ int main () {
     average = calcAverage(classroom, nStudents);
 
     // Display the results
-    displayResults(classroom, average);
+    displayResults(classroom, nStudents, average);
+    std::cout << std::endl;
 
     // Free dynamically allocated memory
     delete [] classroom;
@@ -70,41 +74,48 @@ double calcAverage(Student *s, int size) {
 }
 
 //--- Display Results ----------------------------------------------------------
-void displayResults(Student *s, int avg) {
+void displayResults(Student *s, int size, double avg) {
     int w1 = 20,  // char width for names
         w2 =  5;  // char width for averages
-    //std::string dash = '-';  // display border
 
     std::cout << std::setprecision(1) << std::fixed << std::showpoint;
     std::cout << std::setw(w1) << std::left << "Name" 
               << std::setw(w2) << std::right << "Score" << std::endl;
     std::cout << "-------------------------" << std::endl;
     
-    for (int count 
-    std::cout << std::setw(w1) << std::left << s[count].name 
-              << std::setw(w2) << std::right << s[count].grade << std::endl;
-
+    for (int count = 0; count < size; ++count) {
+        std::cout << std::setw(w1) << std::left << s[count].name 
+                  << std::setw(w2) << std::right << s[count].grade << std::endl;
+        }
     std::cout << "-------------------------" << std::endl;
     std::cout << std::setw(w1) << std::left << "Average" 
-              << std::setw(w2) << std::right << avg << std::endl;
-    
+                  << std::setw(w2) << std::right << avg << std::endl;
 }
 
 //--- Get Grades ---------------------------------------------------------------
 void getGrades(Student *s, int size) {
-    std::cout << "\nEnter the grades below.\n";
+    // find longest name
+    int w1 = s[0].name.length();
+    for (int i=0; i<size; ++i) {
+       if (w1 < s[i].name.length()) {
+            w1 = s[i].name.length();
+       }
+    }
+
+    // get grades
+    std::cout << "Enter the grades below." << std::endl;
     for (int count = 0; count < size; ++count) {
-        std::cout << s[count].name << "'s grade: ";
+        std::cout << std::setw(w1) << std::left << s[count].name << ": ";
         std::cin  >> s[count].grade;
     }
 }
 
 //--- Get Student Names --------------------------------------------------------
 void getNames(Student *s, int size) {
-    std::cout << "\nEnter the names below.\n";
+    std::cout << "Enter the names below." << std::endl;
     std::cin.ignore();
     for (int count = 0; count < size; ++count) {
-        std::cout << "Student " << (count + 1) << " name: ";
+        std::cout << "Student " << (count + 1) << ": ";
         std::getline(std::cin, s[count].name);
     }
 }

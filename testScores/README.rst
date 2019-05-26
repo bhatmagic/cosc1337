@@ -2,6 +2,7 @@ Test Scores
 ###########
 :Author: David Boyd
 :Date: Summer 2019
+:Status: Complete
 
 This program processes test scores for a class.
 
@@ -29,19 +30,6 @@ In general, this program uses array notation when processing arrays becuase it m
 
 Sample Output
 =============
-
-.. code-block::
-
-			Grade
-			-----
-			   75
-			   81
-			   88
-			-----
-	 Average 81.3
-
-Additional Output
-=================
 
 The student's name will be displayed along with the grade.  A struct holds the name and grade for one student.  The name is a C++ string object.  The array will now be an array of structs.  The sample display output looks like this::
 
