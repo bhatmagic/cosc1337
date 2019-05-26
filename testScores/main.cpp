@@ -15,8 +15,9 @@ struct Student {
 //=== Fns Prototypes ===
 //======================
 double calcAverage(Student *, int);
-void   displayResults(Student *, int, double);
-void   getGrades(Student *, int);
+void   displayResults(Student *, int, double, int);
+void   getGrades(Student *, int, int);
+int    getLongestName(Student *, int);
 void   getNames(Student *, int);
 int    getNumStudents();
 void   sortGrades(Student *, int);
@@ -27,7 +28,8 @@ void   sortGrades(Student *, int);
 int main () {
 
     Student *classroom = nullptr;
-    int nStudents;
+    int nStudents,
+        strLength;
     double average;
 
     // Get number of students 
@@ -41,7 +43,8 @@ int main () {
     // Get student names and grades
     getNames(classroom, nStudents);
     std::cout << std::endl;
-    getGrades(classroom, nStudents);
+    strLength = getLongestName(classroom, nStudents);
+    getGrades(classroom, nStudents, strLength);
     std::cout << std::endl;
 
     // Bubble sort array based on stduent grades
@@ -51,7 +54,7 @@ int main () {
     average = calcAverage(classroom, nStudents);
 
     // Display the results
-    displayResults(classroom, nStudents, average);
+    displayResults(classroom, nStudents, average, strLength);
     std::cout << std::endl;
 
     // Free dynamically allocated memory
@@ -74,39 +77,46 @@ double calcAverage(Student *s, int size) {
 }
 
 //--- Display Results ----------------------------------------------------------
-void displayResults(Student *s, int size, double avg) {
-    int w1 = 20,  // char width for names
-        w2 =  5;  // char width for averages
+void displayResults(Student *s, int size, double avg, int w1) {
+    int w2 =  5;  // char width for averages
+    char dash = '-';
 
     std::cout << std::setprecision(1) << std::fixed << std::showpoint;
+
+    // Print Menu
     std::cout << std::setw(w1) << std::left << "Name" 
               << std::setw(w2) << std::right << "Score" << std::endl;
-    std::cout << "-------------------------" << std::endl;
-    
+    // Print border
+    for (int i=0; i<(w1+w2); ++i) {
+        std::cout << dash;
+    } 
+    std::cout << std::endl;
+    // Print Students and Grades
     for (int count = 0; count < size; ++count) {
         std::cout << std::setw(w1) << std::left << s[count].name 
                   << std::setw(w2) << std::right << s[count].grade << std::endl;
         }
-    std::cout << "-------------------------" << std::endl;
+    // Print border
+    for (int i=0; i<(w1+w2); ++i) {
+        std::cout << dash;
+    } 
+    std::cout << std::endl;
+    // Print Average
     std::cout << std::setw(w1) << std::left << "Average" 
                   << std::setw(w2) << std::right << avg << std::endl;
 }
 
 //--- Get Grades ---------------------------------------------------------------
-void getGrades(Student *s, int size) {
-    // find longest name
-    int w1 = s[0].name.length();
-    for (int i=0; i<size; ++i) {
-       if (w1 < s[i].name.length()) {
-            w1 = s[i].name.length();
-       }
-    }
-
-    // get grades
+void getGrades(Student *s, int size, int w1) {
     std::cout << "Enter the grades below." << std::endl;
-    for (int count = 0; count < size; ++count) {
-        std::cout << std::setw(w1) << std::left << s[count].name << ": ";
-        std::cin  >> s[count].grade;
+    for (int i=0; i<size; ++i) {
+        do {  // validate grades between 0 and 105
+            std::cout << std::setw(w1) << std::left << s[i].name << ": ";
+            std::cin  >> s[i].grade;
+            if (s[i].grade < 0 || s[i].grade > 105) {
+                std::cout << "\nGrades must be between 0 and 105\n";
+            }
+        } while (s[i].grade < 0 || s[i].grade > 105);
     }
 }
 
@@ -126,6 +136,17 @@ int getNumStudents() {
     std::cout << "How many students do you wish to process? ";
     std::cin  >> numOfStudents;
     return numOfStudents;
+}
+
+//--- Find Longest Name --------------------------------------------------------
+int getLongestName(Student *s, int size) {
+    int w1 = s[0].name.length();
+    for (int i=0; i<size; ++i) {
+       if (w1 < s[i].name.length()) {
+            w1 = s[i].name.length();
+       }
+    }
+    return w1;
 }
 
 //--- Sort Grades --------------------------------------------------------------
