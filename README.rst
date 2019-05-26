@@ -26,6 +26,8 @@ Contents
 +---------------------+-------------+
 | Postal Packages     | Completed   |
 +---------------------+-------------+
+| Test Scores         | In-Progress |
++---------------------+-------------+
 
 To Run Programs using Linux Terminal
 ====================================
