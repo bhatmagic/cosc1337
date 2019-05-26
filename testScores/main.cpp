@@ -85,7 +85,7 @@ void displayResults(Student *s, int size, double avg) {
     // Format Numbers
     std::cout << std::setprecision(1) << std::fixed << std::showpoint;
 
-    // Print Menu
+    // Print Header
     std::cout << std::setw(w1) << std::left << "Name" 
               << std::setw(w2) << std::right << "Score" << std::endl;
     // Print border
@@ -97,7 +97,7 @@ void displayResults(Student *s, int size, double avg) {
     for (int count = 0; count < size; ++count) {
         std::cout << std::setw(w1) << std::left << s[count].name 
                   << std::setw(w2) << std::right << s[count].grade << std::endl;
-        }
+    }
     // Print border
     for (int i=0; i<(w1+w2); ++i) {
         std::cout << dash;
