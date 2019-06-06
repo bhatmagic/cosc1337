@@ -1,10 +1,4 @@
-/* Copyright 2019 David Boyd
-* FizzBuzz:
-*      Prints          :  1-100
-*      Multiples of 3  : print Fizz
-*      Multiples of 5  : print Buzz
-*      Multiples of 3&5: print FizzBuzz
-*/
+// Copyright 2019 David Boyd
 #include <iostream>
 
 int main(void) {
