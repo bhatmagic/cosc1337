@@ -3,7 +3,6 @@ Programming Fundamentals
 :Author: David Boyd
 :Term: Spring 2018
 :Purpose: This repository holds simple C++ programs.
-:Notes: These programs are in the process of being re-written.
 
 Contents
 =========
@@ -27,6 +26,8 @@ Contents
 | Postal Packages     | Completed   |
 +---------------------+-------------+
 | Test Scores         | Completed   |
++---------------------+-------------+
+| FizzBuzz            | Completed   |
 +---------------------+-------------+
 
 To Run Programs using Linux Terminal
