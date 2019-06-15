@@ -1,6 +1,6 @@
 PHONY: all
 all:
-	g++ -std=c++1z -o main main.cpp ./dateClass/Date.cpp
+	g++ -std=c++1z -o main main.cpp dateClass/Date.cpp
 
 PHONY: run
 run:
