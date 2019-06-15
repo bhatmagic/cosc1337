@@ -7,7 +7,7 @@
 //=== Globar Vars ===
 //===================
 const int   NUM_MONKEYS  = 3,
-            DAYS_IN_WEEK = 7,
+            DAYS_IN_WEEK = 7;
 std::string DAYS_NAME[DAYS_IN_WEEK] = {
             "SUN", "MON", "TUE", "WED",
             "THU", "FRI", "SAT"       };
