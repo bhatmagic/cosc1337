@@ -35,12 +35,12 @@ Output
 User report will display::
 
 	Pounds of Food Eaten by Monkey and Day of Week
-	
+
 	Monkey   Sun   Mon   Tue   Wed   Thu   Fri   Sat
 	     1   2.9   3.3   2.1   3.7   2.2   3.5   3.4
 	     2   4.4   4.8   4.1   3.2   5.1   2.9   2.6
 	     3   1.5   2.1   3.5   2.7   2.0   1.7   2.9
-	
+
 	The average food eaten per day by all monkeys     :   9.2 pounds
 	The least amount of food eaten by any monkey      :   1.5 pounds
 	The largest amount of food eaten per by any monkey:   5.1 pounds

@@ -31,7 +31,7 @@ int main(void) {
     float avg = 0,
           least = 0,
           greatest = 0;
-    
+
     // Set format to 1 dec
     std::cout << std::fixed << std::setprecision(1);
 
@@ -58,7 +58,7 @@ int main(void) {
 //===========================
 float getEatDailyAvg() {
     float sum = 0;
-    for (int i=0; i<NUM_MONKEYS; ++i) { 
+    for (int i=0; i<NUM_MONKEYS; ++i) {
         for (int j=0; j<DAYS_IN_WEEK; ++j) {
             sum += M_FOOD[i][j];
         }
@@ -73,7 +73,7 @@ float getEatDailyLeast() {
     float least = M_FOOD[0][0];
 
     // Iterate through 2D array
-    for (int i=0; i<DAYS_IN_WEEK; ++i) { 
+    for (int i=0; i<DAYS_IN_WEEK; ++i) {
         for (int j=0; j<NUM_MONKEYS; ++j) {
             if (least > M_FOOD[j][i])
                 least = M_FOOD[j][i];
