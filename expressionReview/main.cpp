@@ -6,7 +6,7 @@
 int main () {
 
     // Declare variables
-    int value1, 
+    int value1,
         value2;
     std::string fpQuot = "Floating-point quotient ";
     int wSize = fpQuot.length();

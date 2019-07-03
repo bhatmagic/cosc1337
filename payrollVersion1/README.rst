@@ -19,7 +19,7 @@ The employee master information consists of the following data:
 	- employee ID number (integer value)
 	- employee name (your program should handle names of up to 20 characters - may contain spaces)
 	- pay rate per hour (floating-point value)
-	- type of employee (0 for union, 1 for management) 
+	- type of employee (0 for union, 1 for management)
 
 Note: Uses a string class for the employee name and a struct to hold the employee master information for one employee.
 
@@ -47,7 +47,7 @@ The input should be checks for reasonable values. If a value is not reasonable, 
 
 	- The following data should be positive numbers (greater than 0): employee id and pay rate.
 	- The following data should be non-negative (0 or larger): hours worked.
-	- Employee type should be 0 or 1. 
+	- Employee type should be 0 or 1.
 
 Program Output - Payroll Report
 --------------------------------
@@ -58,6 +58,6 @@ This program gathers all the required input before the payroll report is printed
 	- name
 	- gross pay
 	- tax
-	- net pay 
+	- net pay
 
 The final lines of the payroll report prints the total amount of gross pay and total amount of net pay for the week (the total for all employees).

@@ -9,7 +9,7 @@ This program is a modified version of the Checkbook Balancing program.
 Modifications
 ==============
 
-	- You should enter the transaction type and amount on a single line. If there is a problem with the command (invalid transaction type or invalid amount), then an error message will be displayed and you will have to re-enter the whole command. 
+	- You should enter the transaction type and amount on a single line. If there is a problem with the command (invalid transaction type or invalid amount), then an error message will be displayed and you will have to re-enter the whole command.
     - Add additional service charges as described below.
 
 Program Input
@@ -37,7 +37,7 @@ Service Charges
 Program Output
 ---------------
 
-For each transaction: 
+For each transaction:
 
 	- the transaction type and the amount (if any)
 	- the resulting account balance

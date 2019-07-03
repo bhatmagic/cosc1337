@@ -7,14 +7,14 @@
 //--- Calculate Package Data ---------------------------------------------------
 void calcPkgData(Package *p, Transaction *t) {
     t->count++;
-    
+
     // find greatest dimension
-    if (p->dim1 > p->dim2) { 
+    if (p->dim1 > p->dim2) {
         p->great_dim = p->dim1;
-    } else { 
+    } else {
         p->great_dim = p->dim2; }
-    if (p->dim3 > p->great_dim) { 
-        p->great_dim= p->dim3; 
+    if (p->dim3 > p->great_dim) {
+        p->great_dim= p->dim3;
     }
 
     // calculate girth
@@ -27,10 +27,10 @@ void calcPkgData(Package *p, Transaction *t) {
     } else if ( p->status == 1 ) {
         t->accept++;
     }
-    
+
     // get shipping weight
-    get_ship_charge(p); 
-    
+    get_ship_charge(p);
+
 }
 
 //--- Display Menu -------------------------------------------------------------
@@ -47,13 +47,13 @@ void display_pkgResults(Package *p, Transaction *t) {
     std::cout << std::right;
     std::cout << "Transaction: " << std::setw(width) << t->count  << std::endl;
     std::cout << "Status     : ";
-        (p->status == 1)? 
+        (p->status == 1)?
             (std::cout << std::setw(width) << "Accepted"):
             (std::cout << std::setw(width) << "Rejected");
             std::cout << std::endl;
-    std::cout << "Weight     : " << std::setw(width) << p->wt     << std::endl; 
-    std::cout << "Cost       : "; 
-        (p->status == 0)? 
+    std::cout << "Weight     : " << std::setw(width) << p->wt     << std::endl;
+    std::cout << "Cost       : ";
+        (p->status == 0)?
             (std::cout << std::setw(width) << "-"):
             (std::cout << std::setw(width) << p->ship_cost);
             std::cout << std::endl;
@@ -84,11 +84,11 @@ void get_ship_charge(Package *p) {
 }
 
 //--- Get Package Data ---------------------------------------------------------
-void getPkgData(Package *p) { 
-    do { 
+void getPkgData(Package *p) {
+    do {
         std::cout << "Enter package weight and 3 dimension: ";
         std::cin  >> p->wt;
-        if (p->wt == -1) break; 
+        if (p->wt == -1) break;
         std::cin  >> p->dim1;
         std::cin  >> p->dim2;
         std::cin  >> p->dim3;
@@ -99,7 +99,7 @@ void getPkgData(Package *p) {
                       << "Please re-enter transaction\n" << std::endl;
         }
     } while (p->wt <= 0 ||  p->dim1 <= 0 || p->dim2 <= 0 || p->dim3 <= 0);
-    
+
 }
 
 //--- Run Program --------------------------------------------------------------

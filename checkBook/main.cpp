@@ -24,20 +24,20 @@ double SERV_CHARGE = 0.35;
 //=== Main ===
 //============
 int main () {
-    
+
     // Declare variables
     double balance,
           totalCharges = 0.00;
 
     // Format displayed numbers to two decimal places
-    std::cout << std::fixed << std::showpoint << std::setprecision(2); 
+    std::cout << std::fixed << std::showpoint << std::setprecision(2);
 
     // Display title and menu
     balance = begBalance();
     displayMenu();
     processTransactions(balance, totalCharges);
 
-    endProgram(balance, totalCharges); 
+    endProgram(balance, totalCharges);
     std::cout << std::endl;
 
     return 0;
@@ -69,11 +69,11 @@ bool processCheck (double &balance, double &totalCharges) {
         std::cout << "\nInvalid transaction amount.\n";
         std::cout << "Canceling transaction.";
         return 0;
-    } else {  
+    } else {
         std::cout << "Processing check for $" << transAmt;
 
         balance -= transAmt;
-        totalCharges += SERV_CHARGE; 
+        totalCharges += SERV_CHARGE;
 
         std::cout << "\nBalance: $" << balance;
         std::cout << "\nService charge: $" << SERV_CHARGE << " for a check";
@@ -97,7 +97,7 @@ bool processDeposit(double &balance, double &totalCharges) {
         std::cout << "\nInvalid transaction amount.\n";
         std::cout << "Canceling transaction.";
         return 0;
-    } else {  
+    } else {
         std::cout << "Processing deposit for $" << transAmt;
 
         balance += transAmt;
@@ -117,8 +117,8 @@ void displayMenu(void) {
 
     std::cout << "\nCommands:\n";
     std::cout << "C - process a check\n";
-    std::cout << "D - process a deposit\n";    
-    std::cout << "E - end the programn";    
+    std::cout << "D - process a deposit\n";
+    std::cout << "E - end the programn";
 }
 
 //============================
@@ -137,7 +137,7 @@ void processTransactions(double &balance, double &totalCharges) {
             case 'd': processDeposit(balance, totalCharges); break;
             case 'e': break;
             default : std::cout << "\nNot a valid command.\n"; break;
-        } 
+        }
     } while (command != 'e');
 }
 
@@ -145,7 +145,7 @@ void processTransactions(double &balance, double &totalCharges) {
 //=== Display Title ===
 //=====================
 void displayTitle(void) {
-    std::string prgmTitle = "Checkbook Balancing Program"; 
+    std::string prgmTitle = "Checkbook Balancing Program";
     std::cout << prgmTitle << std::endl;
 }
 //=========================

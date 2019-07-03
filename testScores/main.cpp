@@ -32,13 +32,13 @@ int main () {
     int nStudents;
     double average;
 
-    // Get number of students 
+    // Get number of students
     nStudents = getNumStudents();
     std::cout << std::endl;
-    
+
     // Dynamically allocate an array large enough
     // to hold number of students
-    classroom = new Student[nStudents];  // Allocate memory 
+    classroom = new Student[nStudents];  // Allocate memory
 
     // Get student data
     getNames(classroom, nStudents);
@@ -86,25 +86,25 @@ void displayResults(Student *s, int size, double avg) {
     std::cout << std::setprecision(1) << std::fixed << std::showpoint;
 
     // Print Header
-    std::cout << std::setw(w1) << std::left << "Name" 
+    std::cout << std::setw(w1) << std::left << "Name"
               << std::setw(w2) << std::right << "Score" << std::endl;
     // Print border
     for (int i=0; i<(w1+w2); ++i) {
         std::cout << dash;
-    } 
+    }
     std::cout << std::endl;
     // Print Students and Grades
     for (int count = 0; count < size; ++count) {
-        std::cout << std::setw(w1) << std::left << s[count].name 
+        std::cout << std::setw(w1) << std::left << s[count].name
                   << std::setw(w2) << std::right << s[count].grade << std::endl;
     }
     // Print border
     for (int i=0; i<(w1+w2); ++i) {
         std::cout << dash;
-    } 
+    }
     std::cout << std::endl;
     // Print Average
-    std::cout << std::setw(w1) << std::left << "Average" 
+    std::cout << std::setw(w1) << std::left << "Average"
                   << std::setw(w2) << std::right << avg << std::endl;
 }
 

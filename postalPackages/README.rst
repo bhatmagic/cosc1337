@@ -4,7 +4,7 @@ Postal Packages
 :Term: Spring 2018
 :Status: Completed
 
-Lone Star Package Service ships packages within the state of Texas. 
+Lone Star Package Service ships packages within the state of Texas.
 
 Shipping Requirements
 ======================
@@ -20,8 +20,8 @@ Packages are accepted for shipping subject to the following restrictions:
 Instructions
 =============
 
-To end the program, the user should enter a weight of -1. When the user enters -1 to end the program, 
-they should not have to enter values for the 3 package dimensions. That is, when the user is ready to end the program, 
+To end the program, the user should enter a weight of -1. When the user enters -1 to end the program,
+they should not have to enter values for the 3 package dimensions. That is, when the user is ready to end the program,
 they should only have to enter the weight::
 
   Enter package weight and 3 dimensions: -1
@@ -29,17 +29,17 @@ they should only have to enter the weight::
 Input Validation
 =================
 
-  - Positive numbers for the package weight and dimensions (weight and dimensions must be larger than zero). 
+  - Positive numbers for the package weight and dimensions (weight and dimensions must be larger than zero).
     For transactions with invalid weight or dimensions, an error message prints and skip the transaction.
 
 Shipping Charge
 ================
 
-The shipping charge is based on the following table. This table is represented as parallel arrays (two one-dimensional arrays), 
-one for the weight and one for the shipping charge. Alternatively, a struct or simple class may be defined to represent one 
+The shipping charge is based on the following table. This table is represented as parallel arrays (two one-dimensional arrays),
+one for the weight and one for the shipping charge. Alternatively, a struct or simple class may be defined to represent one
 table entry (one weight and cost). *Then the table would be an array of structs or an array of objects*
 
-Note: Uses a two-dimensional array to store the weights and costs. The weights are stored as integers, 
+Note: Uses a two-dimensional array to store the weights and costs. The weights are stored as integers,
 and the costs need to be stored as floating-point values. So they cannot be mixed in one array.
 
 The array elements in the array declarations are initialized using the values from the table below.
@@ -78,23 +78,23 @@ The array elements in the array declarations are initialized using the values fr
 | 50     | 55.20           |
 +--------+-----------------+
 
-To determine the shipping charge, the weight searches the array for the package weight and then use the corresponding 
-element from the shipping charge array. For example, the shipping charge for a 3 pound package would be $4.00. 
-If the package weight falls between the weights in the weight table, use the larger weight. For example, the shipping 
-charge for a 4 pound package would be 6.75. These values are not hard coded into the program code. 
+To determine the shipping charge, the weight searches the array for the package weight and then use the corresponding
+element from the shipping charge array. For example, the shipping charge for a 3 pound package would be $4.00.
+If the package weight falls between the weights in the weight table, use the larger weight. For example, the shipping
+charge for a 4 pound package would be 6.75. These values are not hard coded into the program code.
 
 Output
 =======
 
-This program consists of only two loops, a transaction processing loop and a cost search loop. 
-There is no input validation loop. If the package input is invalid, an error message prints then skips the normal 
+This program consists of only two loops, a transaction processing loop and a cost search loop.
+There is no input validation loop. If the package input is invalid, an error message prints then skips the normal
 package processing.
 
-A single loop gets the input for the package information, processes the package and outputs some information about the package 
+A single loop gets the input for the package information, processes the package and outputs some information about the package
 (the transaction processing loop).
 
-Note: The package information is NOT stored in an array or vector because if the program processes a lot of packages, it will eventually 
-run out of space in the array. In the case of a vector, as more transactions is processed, it will eat up more and more memory. This 
+Note: The package information is NOT stored in an array or vector because if the program processes a lot of packages, it will eventually
+run out of space in the array. In the case of a vector, as more transactions is processed, it will eat up more and more memory. This
 program is designed to run for long periods of time without running out of memory.
 
 Each transaction prints
@@ -104,8 +104,8 @@ Each transaction prints
   - whether the package was accepted or rejected
   - the package weight
   - the cost for shipping (if applicable)
-  
-When the program ends, it prints the number of packages accepted for shipping and the number of packages rejected. Transactions that 
+
+When the program ends, it prints the number of packages accepted for shipping and the number of packages rejected. Transactions that
 contain invalid input will not be counted.
 
 The screen dialog outputs this (user input is shown in bold):

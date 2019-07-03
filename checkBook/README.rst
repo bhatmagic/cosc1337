@@ -14,7 +14,7 @@ The user will enter the initial balance followed by a series of transactions. Fo
     D - process a deposit (add the deposit amount to the current balance)
     E - do end of month processing and exit the program.
 
-For checks and deposits, you will be prompted to enter the transaction amount. 
+For checks and deposits, you will be prompted to enter the transaction amount.
 
 Service Charges
 ----------------
@@ -37,4 +37,4 @@ Input Validation
 -----------------
 
 	- If the transaction type is invalid, an informative error message will be displayed and you will have to re-enter the transaction type.
-	- The transaction amount should be a positive number (larger than zero). If it is not, an informative error message will be displayed and you will have to re-enter the transaction amount. 
+	- The transaction amount should be a positive number (larger than zero). If it is not, an informative error message will be displayed and you will have to re-enter the transaction amount.

@@ -30,7 +30,7 @@ struct CompanyTimecard {
 //===========================
 //=== Function Prototypes ===
 //===========================
-void   calculateData(Employee *, 
+void   calculateData(Employee *,
                Timecard *, CompanyTimecard *);
 void   displayPayroll(Employee *, Timecard *);
 void   displayPayrollMenu();
@@ -38,7 +38,7 @@ void   displayTotals(CompanyTimecard);
 void   getEmployeeData(Employee *);
 double getGrossPay(Employee, Timecard);
 double getTax(Timecard);
-void   getTimecardData(Employee *, 
+void   getTimecardData(Employee *,
               Timecard *, CompanyTimecard *);
 
 //========================
@@ -57,11 +57,11 @@ int main() {
     // Declare Variables
     Employee        emp[NUM_EMP];
     Timecard        tc[NUM_EMP];
-    CompanyTimecard ctc; 
-    
+    CompanyTimecard ctc;
+
     // Set Currency Format
     std::cout << std::fixed << std::setprecision(2);
-    
+
     // Run Program
     getEmployeeData(emp);
     getTimecardData(emp, tc, &ctc);
@@ -72,7 +72,7 @@ int main() {
     displayTotals(ctc);
     std::cout << std::endl;
     std::cout << "\nPress any key to continue...\n";
-    
+
     return 0;
 }
 
@@ -87,7 +87,7 @@ void calculateData(Employee *emp, Timecard *tc, CompanyTimecard *ctc) {
         ctc->totalGrossPay += tc[i].grossPay;
         ctc->totalTax      += tc[i].tax;
         ctc->totalNetPay   += tc[i].netPay;
-    }    
+    }
 }
 
 //=======================
@@ -135,7 +135,7 @@ void   displayTotals(CompanyTimecard ctc) {
 //=========================
 void getEmployeeData(Employee *emp) {
     for (int i=0; i<NUM_EMP; ++i) {
-        do { 
+        do {
             std::cout<<"Enter information for employee " << i;
             std::cout<<"\nEmployee id: ";
             std::cin >> emp[i].id;
@@ -160,7 +160,7 @@ void getEmployeeData(Employee *emp) {
 }
 
 //=====================
-//=== Get Gross Pay ===   
+//=== Get Gross Pay ===
 //=====================
 double getGrossPay(Employee emp, Timecard tc) {
     double regPay  = 0,
@@ -169,10 +169,10 @@ double getGrossPay(Employee emp, Timecard tc) {
 
     // Union emp & > FT Hours
     if (emp.type == 0 && tc.hours > 40) {
-        otHours    = tc.hours - FTHOURS; 
+        otHours    = tc.hours - FTHOURS;
         totalOTPay = (emp.payRate * OTPAYRATE * otHours);
-        regPay     = (emp.payRate * FTHOURS); 
-        return (regPay + totalOTPay); 
+        regPay     = (emp.payRate * FTHOURS);
+        return (regPay + totalOTPay);
     } else {
         return (emp.payRate * tc.hours);
     }

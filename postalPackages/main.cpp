@@ -5,7 +5,7 @@
 //=== Main ===
 //============
 int main(void) {
-   
+
     // Format number display
     format_money();
 
@@ -16,7 +16,7 @@ int main(void) {
     // Run Program
     display_menu();
     run(&pkg, &trans);
-    
+
     // Display Results
     display_transResults(&trans);
 

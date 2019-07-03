@@ -26,7 +26,7 @@ Works for any number of students.  When the program starts, it asks the user for
 	- Calls a value-returning function that returns the floating-point average of the grades.
 	- Calls a function that displays a neat table of student grades in sorted order.  Includes the appropriate column headings for the table and average score with appropriate label.
 
-In general, this program uses array notation when processing arrays becuase it makes the code easier to read and understand.  However, this program implements only pointer notation in the function to calculate the average.  That is, it declares the array parameter using pointer notation instead of array notation to access the array elements.  
+In general, this program uses array notation when processing arrays becuase it makes the code easier to read and understand.  However, this program implements only pointer notation in the function to calculate the average.  That is, it declares the array parameter using pointer notation instead of array notation to access the array elements.
 
 Sample Output
 =============
