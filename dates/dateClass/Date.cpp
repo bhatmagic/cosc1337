@@ -47,7 +47,7 @@ void Date::_setYear(int year) {
   this->_year = (year > 1949 && year < 2021) ? (year) : (2001);
 }
 
-/* 
+/*
  * Public:
  */
 

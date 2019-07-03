@@ -4,7 +4,7 @@
 int main(void) {
     int min = 1,
         max = 100;
-    
+
     for (int i=min; i<max+1; ++i) {
         if (i%3==0 && i%5==0)
             std::cout << "FizzBuzz\n";
@@ -12,7 +12,7 @@ int main(void) {
             std::cout << "Fizz\n";
         else if (i%5==0)
             std::cout << "Buzz\n";
-        else 
+        else
             std::cout << i << std::endl;
     }
 

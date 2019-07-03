@@ -5,19 +5,19 @@
 
 class Date {
 
-  private: 
-    
-    int _day, 
-        _monthNumber, 
+  private:
+
+    int _day,
+        _monthNumber,
         _year;
     std::string _monthName;
-    
+
     void _setDay(int);
     void _setMonthName();
     void _setMonthNumber(int);
     void _setYear(int);
 
-  public: 
+  public:
 
     Date();
     int getDay() const;
@@ -28,4 +28,4 @@ class Date {
     void printEuropean() const;
     void printNumeric() const;
     void set(int, int, int);
-}; 
+};
