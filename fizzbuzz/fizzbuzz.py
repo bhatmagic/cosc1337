@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # Copyright 2019 David Boyd, all rights reserved
-# Program: <program name>
+# Program: FizzBuzz
 # Description:
-#     <what the program does>
-# Date: <today’s date>
+#     Prints 'FizzBuzz', 'Fizz', or 'Buzz' depending on the multiple.
+# Date: 2019/08/21
 # Revised:
 #     <revision date>
 
