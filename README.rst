@@ -33,14 +33,11 @@ Contents
 To Run Programs using Linux Terminal
 ====================================
 
-Compile:
+.. code-block :: Bash
 
-.. code-block::
+	# Compile Program
+	g++ -o main \*.cpp
 
-	g++ -o main *.cpp
-
-Run:
-
-.. code-block::
-
+	# Run Program
 	./main
+
